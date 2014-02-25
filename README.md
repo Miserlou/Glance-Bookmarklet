@@ -1,4 +1,4 @@
-![OpenSpritz](http://i.imgur.com/QQlZgUJ.png)
+![OpenSpritz](http://i.imgur.com/g8qPcGg.gif)
 
 # OpenSpritz
 
@@ -12,4 +12,4 @@ I made this for fun in a few minutes just because of how much I liked the Spritz
   * With some documentaiton.
 * Make a bookmarklet which will Spritzify highlighted text.
 
-_Neither of these things will likely every materialize. Please, be my guest._
+_Neither of these things will likely ever materialize. Please, be my guest._
