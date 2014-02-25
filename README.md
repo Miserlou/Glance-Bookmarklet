@@ -1,4 +1,4 @@
-![http://i.imgur.com/QQlZgUJ.png](OpenSpritz)
+![OpenSpritz](http://i.imgur.com/QQlZgUJ.png)
 
 # OpenSpritz
 
