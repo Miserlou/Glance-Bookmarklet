@@ -42,15 +42,13 @@
 
         <script>
         $( document ).ready(function() {
+            var el = {};
+            $('#start').click(function() {
+                el = $('#spritz_me').openspritz($('#result') , {});
+            });
 
             $('#selector').on('change', function (e) {
-
-                clearTimeouts();
-                var optionSelected = $("option:selected", this);
-                var valueSelected = this.value;
-                var input = $('#spritz_me').text();
-                var rez = spritzify(input, '#result', valueSelected);
-
+                el.data('plugin_openspritz').setWpm(this.value);
             });
         });
         </script>
@@ -61,8 +59,9 @@
         <div id="container">
 
             <div id="result">
-                Choose a WPM to start.
+                Press Start 
             </div>
+            <button id="start">Start</button>
 
             <select id="selector">
               <option value="300">300wpm</option>

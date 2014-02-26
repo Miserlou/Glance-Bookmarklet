@@ -1,66 +1,74 @@
-function spritzify(input, output, wpm){
-    var words_per_minute = wpm;
-    var ms_per_word = 60000/wpm;
+;(function ( $, window ) {
+    var name = "openspritz";
 
-    var all_words = input.split(' ');
+    var defaults = {
+        wpm: 200,
+        nbrChars: 22
+    };
 
-    var word = '';
-    var result = '';
-
-    for (var i=0; i<all_words.length; i++){
-
-        setTimeout(function(x) { 
-            return function() { 
-                var p = pivot(all_words[x]);
-                if(p == '' || p == '\n' || p == ' '){
-                    return;
-                }
-                $(output).html(p);
-        }; }(i), ms_per_word * i);
-        
-        // $(output).html(result);
-    }
-}
-
-function clearTimeouts(){
-    var id = window.setTimeout(function() {}, 0);
-
-    while (id--) {
+    var _clearTimeout = function() {
+      var id = window.setTimeout(function() {}, 0);
+      while (id--) {
         window.clearTimeout(id);
-    }
-}
+      }   
+    };
 
-function pivot(word){
-    var length = word.length;
+    var Spritz = function ( element, base, options ) {
+      this._el = $(element);
+      this._base = base;
+      this._settings = $.extend( {}, defaults, options );
+      this._name = name;
+      this.init();
+    };
 
-    var bit = -1;
-    while(word.length < 22){
-        if(bit > 0){
-            word = word + '.';
+    Spritz.prototype = {
+      init: function () {
+        var words = this._el.text().split(' ');
+        var self = this;
+        $.each( words, function( i, word ) {
+          setTimeout( self.render.bind(self), (60000/self._settings.wpm) * i, word );
+        });
+      },
+
+      pivot: function( word ) {
+        var length = word.length,
+            bit = -1;
+
+        while( word.length < this._settings.nbrChars ) {
+          word = bit > 0 ? word + '.' : '.' + word; 
+          bit *= -1;
         }
-        else{
-            word = '.' + word;
+
+      var start = word.slice( 0, word.length/2 ),
+          end = word.slice( word.length/2, word.length ),
+          first = $( '<span></span>' ).attr( 'class', 'start' ).text( start.slice( 0, start.length -1 ) ),
+          middle = $('<span></span>').attr('class', 'pivot').text( start.slice( start.length - 1 ) ),
+          last = $('<span></span>').attr('class', 'end').text(end);
+
+      return first.append(middle).append(last);
+
+      },
+      
+      render: function( word ) {
+        var p = this.pivot( word );
+        if(p === '' || p === '\n' || p === ' ') {
+          return; 
         }
-        bit = bit * -1;
-    }
+        this._base.html(p);
+      },
 
-    var start = '';
-    var end = '';
-    if((length % 2) === 0){
-        start = word.slice(0, word.length/2);
-        end = word.slice(word.length/2, word.length);
-    } else{
-        start = word.slice(0, word.length/2);
-        end = word.slice(word.length/2, word.length);
-    }
+        setWpm: function(wpm) {
+          _clearTimeout();
+          this._settings.wpm = wpm;   
+          this.init();
+        }
+    };
 
-    var result;
-    result = "<span class='start'>" + start.slice(0, start.length -1);
-    result = result + "</span><span class='pivot'>";
-    result = result + start.slice(start.length-1, start.length);
-    result = result + "</span><span class='end'>";
-    result = result + end;
-    result = result + "</span>";
-
-    return result;
-}
+    $.fn[name] = function ( options ) {
+      return this.each(function() {
+        if( !$.data( this, "plugin_" + name) ) {
+          $.data( this, "plugin_" + name, new Spritz( this, options) );
+        }
+      });
+    };
+}( jQuery, window ));
