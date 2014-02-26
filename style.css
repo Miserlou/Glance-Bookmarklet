@@ -1,0 +1,28 @@
+body{
+
+}
+
+#container{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#result{
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Droid Sans Mono', sans-serif;
+    padding-top: 36px;
+    padding-bottom: 36px;
+    min-height: 100px;
+}
+
+.start{
+    color: #333333;
+}
+.pivot{
+    color: #ff0000;
+}
+.end{
+    color: #333333;
+}
