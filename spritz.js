@@ -1,3 +1,16 @@
+$( document ).ready(function() {
+
+    $('#selector').on('change', function (e) {
+
+        clearTimeouts();
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        var input = $('#spritz_me').text();
+        var rez = spritzify(input, '#result', valueSelected);
+
+    });
+});
+
 function spritzify(input, output, wpm){
     var words_per_minute = wpm;
     var ms_per_word = 60000/wpm;
