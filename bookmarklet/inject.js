@@ -9,7 +9,7 @@ function getSelectionText() {
             for (var i = 0; i < sel.rangeCount; ++i) {
                 temp.appendChild(sel.getRangeAt(i).cloneContents());
             }
-            text = temp.innerText;
+            text = temp.textContent;
         }
     } else if (document.selection) {
         if (document.selection.type == "Text") {
@@ -48,18 +48,18 @@ container.appendChild(bar);
 
 var text = document.createElement("div");
 text.id = "openspritz-text";
-text.innerText = "Select Some Text"
+text.innerHTML = "Select Some Text"
 text.style.fontSize = '24px';
 var speedSelect = document.createElement("select");
 for(var i = 100; i <= 1000; i+=100) {
     var opt = document.createElement("option")
     opt.value = i;
-    opt.innerText = i + 'wpm';
+    opt.innerHTML = i + 'wpm';
     speedSelect.appendChild(opt);
 }
 bar.appendChild(speedSelect);
 var startButton = document.createElement('button');
-startButton.innerText = '->';
+startButton.innerHTML = '->';
 bar.appendChild(startButton);
 bar.appendChild(text);
 startButton.onclick = function() {
