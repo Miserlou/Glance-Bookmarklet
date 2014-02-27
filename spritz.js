@@ -14,7 +14,7 @@ function spritzify(input, output, wpm){
 
     for (var i=0; i<all_words.length; i++){
 
-        if(all_words[i].indexOf('.') != -1){
+        if(all_words[i].indexOf('.') != -1 || all_words[i].indexOf('!') != -1 || all_words[i].indexOf('?') != -1){
             temp_words.splice(t+1, 0, ".");
             temp_words.splice(t+1, 0, ".");
             t++;
@@ -41,34 +41,55 @@ function spritzify(input, output, wpm){
 function pivot(word){
     var length = word.length;
 
-    var bit = 1;
-    while(word.length < 22){
-        if(bit > 0){
-            word = word + '.';
+    if(length<6){
+
+        var bit = 1;
+        while(word.length < 22){
+            if(bit > 0){
+                word = word + '.';
+            }
+            else{
+                word = '.' + word;
+            }
+            bit = bit * -1;
         }
-        else{
-            word = '.' + word;
+
+        var start = '';
+        var end = '';
+        if((length % 2) === 0){
+            start = word.slice(0, word.length/2);
+            end = word.slice(word.length/2, word.length);
+        } else{
+            start = word.slice(0, word.length/2);
+            end = word.slice(word.length/2, word.length);
         }
-        bit = bit * -1;
+
+        var result;
+        result = "<span class='start'>" + start.slice(0, start.length -1);
+        result = result + "</span><span class='pivot'>";
+        result = result + start.slice(start.length-1, start.length);
+        result = result + "</span><span class='end'>";
+        result = result + end;
+        result = result + "</span>";
     }
 
-    var start = '';
-    var end = '';
-    if((length % 2) === 0){
-        start = word.slice(0, word.length/2);
-        end = word.slice(word.length/2, word.length);
-    } else{
-        start = word.slice(0, word.length/2);
-        end = word.slice(word.length/2, word.length);
-    }
+    else{
 
-    var result;
-    result = "<span class='start'>" + start.slice(0, start.length -1);
-    result = result + "</span><span class='pivot'>";
-    result = result + start.slice(start.length-1, start.length);
-    result = result + "</span><span class='end'>";
-    result = result + end;
-    result = result + "</span>";
+        var tail = 22 - (word.length + 7);
+        word = '.......' + word + ('.'.repeat(tail));
+
+        var start = word.slice(0, word.length/2);
+        var end = word.slice(word.length/2, word.length);
+
+        var result;
+        result = "<span class='start'>" + start.slice(0, start.length -1);
+        result = result + "</span><span class='pivot'>";
+        result = result + start.slice(start.length-1, start.length);
+        result = result + "</span><span class='end'>";
+        result = result + end;
+        result = result + "</span>";
+
+    }
 
     return result;
 }
@@ -80,4 +101,9 @@ function clearTimeouts(){
     while (id--) {
         window.clearTimeout(id);
     }
+}
+
+String.prototype.repeat = function( num )
+{
+    return new Array( num + 1 ).join( this );
 }
