@@ -14,9 +14,15 @@ function spritzify(input, output, wpm){
 
     for (var i=0; i<all_words.length; i++){
 
+        if(all_words[i].indexOf('.') != -1){
+            temp_words[t] = all_words[i].replace('.', '•');
+        }
+
         if(all_words[i].indexOf('.') != -1 || all_words[i].indexOf('!') != -1 || all_words[i].indexOf('?') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf(';') != -1|| all_words[i].indexOf(')') != -1){
             temp_words.splice(t+1, 0, ".");
             temp_words.splice(t+1, 0, ".");
+            temp_words.splice(t+1, 0, ".");
+            t++;
             t++;
             t++;
         }
@@ -90,6 +96,8 @@ function pivot(word){
         result = result + "</span>";
 
     }
+
+    result = result.replace(/\./g, "<span class='invisible'>.</span>");
 
     return result;
 }

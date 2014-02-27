@@ -29,6 +29,16 @@ body{
     font-family: 'Droid Sans Mono', sans-serif;
 }
 
+#notch{
+    margin-top: 9px;
+    padding-top: 12px;
+}
+
+.invisible{
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #ffffff;
+}
+
 .start{
     color: #333333;
 }
