@@ -1,5 +1,20 @@
-function spritzify(input, output, wpm){
-    var words_per_minute = wpm;
+
+// Please don't abuse this.
+var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
+
+function spritz(){
+    var selection = getSelectionHtml();
+    if(selection){
+        spritzify(selection);
+    }
+    else{
+        spritzifyURL();
+    }
+}
+
+function spritzify(input){
+
+    var wpm = 500;
     var ms_per_word = 60000/wpm;
 
     var all_words = input.split(' ');
@@ -47,7 +62,7 @@ function spritzify(input, output, wpm){
             return function() { 
 
                 var p = pivot(all_words[x]);
-                $(output).html(p);
+                $('#spritz_result').html(p);
 
         }; }(i), ms_per_word * i);
         
@@ -138,11 +153,42 @@ function getSelectionHtml() {
         }
     }
     if(html === ""){
-        return $('#spritz_me').text();
+        return false;
     }
     else{
         return html;
     }
+}
+
+function spritzifyURL(){
+    var url = document.URL;
+    //var url = "http://www.theguardian.com/world/2014/feb/27/gchq-nsa-webcam-images-internet-yahoo";
+    //var url = "http://www.gq.com/sports/profiles/201202/david-diamante-interview-cigar-lounge-brooklyn-new-jersey-nets?currentPage=all";
+
+    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
+    function (data) {
+
+        var title = '';
+        if(data.title !== ""){
+            title = data.title + ". ";
+        }
+
+        var author = '';
+        if(data.author !== null){
+            author = "By " + data.author + ". ";
+        }
+
+        var body = jQuery(data.content).text();
+        body = $.trim(body);
+
+        var text_content = title + author + body;
+        text_content = text_content.replace(/\./g, '. ');
+        text_content = text_content.replace(/\?/g, '? ');
+        text_content = text_content.replace(/\!/g, '! ');
+        spritzify(text_content);
+        $('#spritz_me').text(text_content);
+    });
+
 }
 
 String.prototype.repeat = function( num ){

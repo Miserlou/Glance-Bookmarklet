@@ -12,13 +12,13 @@
         <script>
         $( document ).ready(function() {
 
-            $('#selector').on('change', function (e) {
+            $('#spritz_selector').on('change', function (e) {
 
                 clearTimeouts();
                 var optionSelected = $("option:selected", this);
                 var valueSelected = this.value;
                 var input = $('#spritz_me').text();
-                var rez = spritzify(getSelectionHtml(), '#result', valueSelected);
+                var rez = spritz();
 
             });
         });
@@ -33,7 +33,7 @@
 ――――――――――<span id="notch">ф</span>―――――――――――
             </div>
 
-            <div id="result">
+            <div id="spritz_result">
                 Choose a WPM to start.
             </div>
 
@@ -41,7 +41,8 @@
 ――――――――――――――――――――――
             </div>
 
-            <select id="selector">
+            <select id="spritz_selector">
+              <option value="0">Select WPM</option>
               <option value="100">100wpm</option>
               <option value="200">200wpm</option>
               <option value="300">300wpm</option>
