@@ -18,7 +18,7 @@
                 var optionSelected = $("option:selected", this);
                 var valueSelected = this.value;
                 var input = $('#spritz_me').text();
-                var rez = spritzify(input, '#result', valueSelected);
+                var rez = spritzify(getSelectionHtml(), '#result', valueSelected);
 
             });
         });

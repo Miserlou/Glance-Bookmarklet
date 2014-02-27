@@ -121,7 +121,30 @@ function clearTimeouts(){
     }
 }
 
-String.prototype.repeat = function( num )
-{
+function getSelectionHtml() {
+    var html = "";
+    if (typeof window.getSelection != "undefined") {
+        var sel = window.getSelection();
+        if (sel.rangeCount) {
+            var container = document.createElement("div");
+            for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+                container.appendChild(sel.getRangeAt(i).cloneContents());
+            }
+            html = container.innerHTML;
+        }
+    } else if (typeof document.selection != "undefined") {
+        if (document.selection.type == "Text") {
+            html = document.selection.createRange().htmlText;
+        }
+    }
+    if(html === ""){
+        return $('#spritz_me').text();
+    }
+    else{
+        return html;
+    }
+}
+
+String.prototype.repeat = function( num ){
     return new Array( num + 1 ).join( this );
 }
