@@ -32,6 +32,7 @@ container.style.position = "fixed";
 container.style.top = '0'
 container.style.left = '0';
 container.style.width = '100%';
+container.style.zIndex = "90000"; //try to keep the bar in front
 var bar = document.createElement('div');
 bar.style.width = '360px';
 bar.style.marginLeft = bar.style.marginRight = 'auto';
