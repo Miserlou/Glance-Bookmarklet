@@ -10,11 +10,23 @@ body{
 
 #result{
     text-align: center;
-    font-size: 36px;
+    font-size: 32px;
     font-family: 'Droid Sans Mono', sans-serif;
-    padding-top: 36px;
-    padding-bottom: 36px;
-    min-height: 100px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    min-height: 40px;
+}
+
+#guide_top{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+}
+
+#guide_bottom{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
 }
 
 .start{
