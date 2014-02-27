@@ -2,10 +2,20 @@ body{
 
 }
 
+#spritz_holder{
+    width: 100%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    background-color: #ffffff;
+}
+
 #spritz_container{
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
+    background-color: #ffffff;
+
 }
 
 #container{

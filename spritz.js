@@ -10,8 +10,13 @@ var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
 function create_spritz(){
 
     $.get("spritz.html",function(data){
-        $("body").prepend(data);
+
+        if (!($("#spritz_container").length) ) {
+            $("body").prepend(data);
+        }
+
     },'html');  
+
 }
 
 // Entry point
