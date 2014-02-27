@@ -9,6 +9,21 @@
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
         <link href='style.css' rel='stylesheet' type='text/css'>
 
+        <script>
+        $( document ).ready(function() {
+
+            $('#selector').on('change', function (e) {
+
+                clearTimeouts();
+                var optionSelected = $("option:selected", this);
+                var valueSelected = this.value;
+                var input = $('#spritz_me').text();
+                var rez = spritzify(input, '#result', valueSelected);
+
+            });
+        });
+        </script>
+
     </head>
 
     <body>
