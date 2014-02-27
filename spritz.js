@@ -2,9 +2,17 @@
 // spritz.js
 // A JavaScript Speed Reader
 // rich@gun.io
+// https://github.com/Miserlou/OpenSpritz
 
 // Please don't abuse this.
 var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
+
+function create_spritz(){
+
+    $.get("spritz.html",function(data){
+        $("body").prepend(data);
+    },'html');  
+}
 
 // Entry point
 function spritz(){
@@ -168,9 +176,9 @@ function getSelectionHtml() {
 
 // Uses the Readability API to get the juicy content of the current page.
 function spritzifyURL(){
-    //var url = document.URL;
-    var url = "http://www.theguardian.com/world/2014/feb/27/gchq-nsa-webcam-images-internet-yahoo";
-    //var url = "http://www.gq.com/sports/profiles/201202/david-diamante-interview-cigar-lounge-brooklyn-new-jersey-nets?currentPage=all";
+    var url = document.URL;
+    // var url = "http://www.theguardian.com/world/2014/feb/27/gchq-nsa-webcam-images-internet-yahoo";
+    // var url = "http://www.gq.com/sports/profiles/201202/david-diamante-interview-cigar-lounge-brooklyn-new-jersey-nets?currentPage=all";
 
     $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
     function (data) {
