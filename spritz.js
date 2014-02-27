@@ -48,6 +48,7 @@ function spritzify(input, output, wpm){
 
                 var p = pivot(all_words[x]);
                 if(typeof $ !== 'undefined') $(output).html(p);
+                else if(output.tagName) output.innerHTML = p;
                 else document.querySelector(output).innerHTML = p;
 
         }; }(i), ms_per_word * i);
