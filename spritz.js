@@ -7,33 +7,41 @@ function spritzify(input, output, wpm){
     var word = '';
     var result = '';
 
+
+    // Preprocess words
+    var temp_words = all_words.slice(0); // copy Array
+    var t = 0;
+
     for (var i=0; i<all_words.length; i++){
 
+        if(all_words[i].indexOf('.') != -1){
+            temp_words.splice(t+1, 0, ".");
+            temp_words.splice(t+1, 0, ".");
+            t++;
+            t++;
+        }
+        t++;
+
+    }
+    all_words = temp_words.slice(0);
+
+    // Set the timers!
+    for (var i=0; i<all_words.length; i++){
         setTimeout(function(x) { 
             return function() { 
+
                 var p = pivot(all_words[x]);
-                if(p == '' || p == '\n' || p == ' '){
-                    return;
-                }
                 $(output).html(p);
+
         }; }(i), ms_per_word * i);
         
-        // $(output).html(result);
-    }
-}
-
-function clearTimeouts(){
-    var id = window.setTimeout(function() {}, 0);
-
-    while (id--) {
-        window.clearTimeout(id);
     }
 }
 
 function pivot(word){
     var length = word.length;
 
-    var bit = -1;
+    var bit = 1;
     while(word.length < 22){
         if(bit > 0){
             word = word + '.';
@@ -63,4 +71,13 @@ function pivot(word){
     result = result + "</span>";
 
     return result;
+}
+
+// This is a hack using the fact that browers sequentially id the timers.
+function clearTimeouts(){
+    var id = window.setTimeout(function() {}, 0);
+
+    while (id--) {
+        window.clearTimeout(id);
+    }
 }
