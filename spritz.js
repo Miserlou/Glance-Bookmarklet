@@ -1,7 +1,12 @@
 
+// spritz.js
+// A JavaScript Speed Reader
+// rich@gun.io
+
 // Please don't abuse this.
 var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
 
+// Entry point
 function spritz(){
 
     var wpm = parseInt($("#spritz_selector").val(), 10);
@@ -18,6 +23,7 @@ function spritz(){
     }
 }
 
+// The meat!
 function spritzify(input){
 
     var wpm = parseInt($("#spritz_selector").val(), 10);
@@ -75,6 +81,7 @@ function spritzify(input){
     }
 }
 
+// Find the red-character of the current word.
 function pivot(word){
     var length = word.length;
 
@@ -133,15 +140,8 @@ function pivot(word){
     return result;
 }
 
-// This is a hack using the fact that browers sequentially id the timers.
-function clearTimeouts(){
-    var id = window.setTimeout(function() {}, 0);
-
-    while (id--) {
-        window.clearTimeout(id);
-    }
-}
-
+// Get the currently selected text, if any.
+// Shameless pinched from StackOverflow.
 function getSelectionHtml() {
     var html = "";
     if (typeof window.getSelection != "undefined") {
@@ -166,9 +166,10 @@ function getSelectionHtml() {
     }
 }
 
+// Uses the Readability API to get the juicy content of the current page.
 function spritzifyURL(){
-    var url = document.URL;
-    //var url = "http://www.theguardian.com/world/2014/feb/27/gchq-nsa-webcam-images-internet-yahoo";
+    //var url = document.URL;
+    var url = "http://www.theguardian.com/world/2014/feb/27/gchq-nsa-webcam-images-internet-yahoo";
     //var url = "http://www.gq.com/sports/profiles/201202/david-diamante-interview-cigar-lounge-brooklyn-new-jersey-nets?currentPage=all";
 
     $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
@@ -184,19 +185,35 @@ function spritzifyURL(){
             author = "By " + data.author + ". ";
         }
 
-        var body = jQuery(data.content).text();
-        body = $.trim(body);
+        var body = jQuery(data.content).text(); // Textify HTML content.
+        body = $.trim(body); // Trip trailing and leading whitespace.
+        body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
 
         var text_content = title + author + body;
-        text_content = text_content.replace(/\./g, '. ');
+        text_content = text_content.replace(/\./g, '. '); // Make sure punctuation is apprpriately spaced.
         text_content = text_content.replace(/\?/g, '? ');
         text_content = text_content.replace(/\!/g, '! ');
         spritzify(text_content);
-        $('#spritz_me').text(text_content);
     });
 
 }
 
+//////
+// Helpers
+//////
+
+// This is a hack using the fact that browers sequentially id the timers.
+function clearTimeouts(){
+    var id = window.setTimeout(function() {}, 0);
+
+    while (id--) {
+        window.clearTimeout(id);
+    }
+}
+
+// Let strings repeat themselves,
+// because JavaScript isn't as awesome as Python.
 String.prototype.repeat = function( num ){
     return new Array( num + 1 ).join( this );
 }
+
