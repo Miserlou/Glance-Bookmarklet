@@ -3,6 +3,12 @@
 var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
 
 function spritz(){
+
+    var wpm = parseInt($("#spritz_selector").val(), 10);
+    if(wpm < 1){
+        return;
+    }
+
     var selection = getSelectionHtml();
     if(selection){
         spritzify(selection);
@@ -14,7 +20,7 @@ function spritz(){
 
 function spritzify(input){
 
-    var wpm = 500;
+    var wpm = parseInt($("#spritz_selector").val(), 10);
     var ms_per_word = 60000/wpm;
 
     var all_words = input.split(' ');
