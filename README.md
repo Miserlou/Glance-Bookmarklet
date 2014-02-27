@@ -1,4 +1,4 @@
-![OpenSpritz](http://i.imgur.com/g8qPcGg.gif)
+![OpenSpritz](http://i.imgur.com/LOtmyf9.gif)
 
 # OpenSpritz
 
