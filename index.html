@@ -4,25 +4,13 @@
     <head>
         <title>OpenSpritz</title>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="spritz.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
-        <link href='style.css' rel='stylesheet' type='text/css'>
-
-        <script>
-        $( document ).ready(function() {
-
-            $('#spritz_selector').on('change', function (e) {
-
-                clearTimeouts();
-                var optionSelected = $("option:selected", this);
-                var valueSelected = this.value;
-                var input = $('#spritz_me').text();
-                var rez = spritz();
-
-            });
-        });
-        </script>
+        <style>
+        #container{
+            width: 50%;
+            margin-left: 25%;
+            margin-right: 25%;
+        }
+        </style>
 
     </head>
 
@@ -33,7 +21,7 @@
             <h1>A Nice Cup of Tea</h1>
             <h2>George Orwell, 12 January 1946</h2>
 
-            <button onclick="javascript:(function(){var script=document.createElement('SCRIPT');script.src='spritz.js';document.body.appendChild(script);})(); create_spritz();">
+            <button onclick="javascript:(function(){var script=document.createElement('SCRIPT');script.src='https://raw.github.com/Miserlou/OpenSpritz/master/spritz.js';document.body.appendChild(script);})(); create_spritz();">
                 OpenSpritz this!
             </button>
 

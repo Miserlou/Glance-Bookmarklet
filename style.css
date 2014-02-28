@@ -1,5 +1,5 @@
 body{
-
+    margin: 0px;
 }
 
 #spritz_holder{
@@ -16,12 +16,6 @@ body{
     margin-right: 25%;
     background-color: #ffffff;
 
-}
-
-#container{
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
 }
 
 #spritz_result{
@@ -50,6 +44,17 @@ body{
 #notch{
     margin-top: 9px;
     padding-top: 12px;
+}
+
+#spritz_credits{
+    float: right;
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-size: 13px;
+}
+
+#spritz_credits a{
+    color: #dddddd;
+    text-decoration: none;
 }
 
 .invisible{

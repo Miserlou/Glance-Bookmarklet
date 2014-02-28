@@ -26,21 +26,55 @@
               <option value="800">800wpm</option>
               <option value="900">900wpm</option>
               <option value="1000">1000wpm</option>
-            </select> 
+            </select>
+
+            <span id="spritz_credits">
+              <a href="http://github.com/Miserlou/OpenSpritz">
+                <i>OpenSpritz</i>
+              </a>
+            </span>
+
+
     </div>
 </div>
 
-        <script>
-        $( document ).ready(function() {
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<link href='https://raw.github.com/Miserlou/OpenSpritz/master/style.css' rel='stylesheet' type='text/css'>
 
-            $('#spritz_selector').on('change', function (e) {
 
-                clearTimeouts();
-                var optionSelected = $("option:selected", this);
-                var valueSelected = this.value;
-                var input = $('#spritz_me').text();
-                var rez = spritz();
+<script>
+// jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
+(function(){
 
-            });
-        });
-        </script>
+    // the minimum version of jQuery we want
+    var v = "1.3.2";
+
+    // check prior inclusion and version
+    if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
+      var done = false;
+      var script = document.createElement("script");
+      script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
+      script.onload = script.onreadystatechange = function(){
+        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+          done = true;
+        }
+      };
+      document.getElementsByTagName("head")[0].appendChild(script);
+    }
+  })();
+</script>
+
+<script>
+$( document ).ready(function() {
+
+    $('#spritz_selector').on('change', function (e) {
+
+        clearTimeouts();
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        var input = $('#spritz_me').text();
+        var rez = spritz();
+
+    });
+});
+</script>
