@@ -13,12 +13,12 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 999999;
 }
 
 #spritz_spacer{
     width: 100%;
-    min-height: 190px;
+    min-height: 210px;
 }
 
 #spritz_container{
