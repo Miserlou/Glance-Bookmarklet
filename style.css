@@ -64,6 +64,10 @@ body{
     text-decoration: none;
 }
 
+#spritz_selector{
+    float: left;
+}
+
 .invisible{
     font-family: 'Droid Sans Mono', sans-serif;
     color: #ffffff;
