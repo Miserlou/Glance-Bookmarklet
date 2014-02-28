@@ -9,14 +9,44 @@ var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
 
 function create_spritz(){
 
-    $.get("spritz.html",function(data){
+     spritz_loader = function() {
 
-        if (!($("#spritz_container").length) ) {
-            $("body").prepend(data);
+        $.get("https://raw.github.com/Miserlou/OpenSpritz/master/spritz.html",function(data){
+
+            console.log(data);
+
+            if (!($("#spritz_container").length) ) {
+                $("body").prepend(data);
+            }
+
+        },'html');
+    };
+
+    load_jq(spritz_loader);
+
+}
+
+function load_jq(spritz_loader){
+    // jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
+
+    // the minimum version of jQuery we want
+    var v = "1.11.0";
+
+    // check prior inclusion and version
+    if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
+      var done = false;
+      var script = document.createElement("script");
+      script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
+      script.onload = script.onreadystatechange = function(){
+        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+          done = true;
+          spritz_loader();
         }
-
-    },'html');  
-
+      };
+      document.getElementsByTagName("head")[0].appendChild(script);
+    } else{
+        spritz_loader();
+    }
 }
 
 // Entry point

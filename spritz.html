@@ -1,4 +1,6 @@
-        
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<link href='https://raw.github.com/Miserlou/OpenSpritz/master/style.css' rel='stylesheet' type='text/css'>        
+
 <div id="spritz_holder">
         <div id="spritz_container">
 
@@ -33,38 +35,10 @@
                 <i>OpenSpritz</i>
               </a>
             </span>
-
-
     </div>
 </div>
 
-<link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
-<link href='https://raw.github.com/Miserlou/OpenSpritz/master/style.css' rel='stylesheet' type='text/css'>
-
-
-<script>
-// jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
-(function(){
-
-    // the minimum version of jQuery we want
-    var v = "1.3.2";
-
-    // check prior inclusion and version
-    if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
-      var done = false;
-      var script = document.createElement("script");
-      script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
-      script.onload = script.onreadystatechange = function(){
-        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-          done = true;
-        }
-      };
-      document.getElementsByTagName("head")[0].appendChild(script);
-    }
-  })();
-</script>
-
-<script>
+<script type='text/javascript'>
 $( document ).ready(function() {
 
     $('#spritz_selector').on('change', function (e) {
