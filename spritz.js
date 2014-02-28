@@ -53,6 +53,7 @@ function load_jq(spritz_loader){
 function hide_spritz(){
     $('#spritz_spacer').slideUp();
     $('#spritz_container').slideUp();
+    $('#spritz_holder').slideUp();
 }
 
 // Entry point
