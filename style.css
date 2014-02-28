@@ -5,9 +5,15 @@ body{
 #spritz_holder{
     width: 100%;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    padding-top: 12px;
     padding-bottom: 12px;
     margin-bottom: 12px;
     background-color: #ffffff;
+    min-height: 166px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
 }
 
 #spritz_container{
@@ -15,6 +21,7 @@ body{
     margin-left: 25%;
     margin-right: 25%;
     background-color: #ffffff;
+    line-height: 43px;
 
 }
 
