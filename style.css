@@ -16,6 +16,11 @@ body{
     z-index: 999;
 }
 
+#spritz_spacer{
+    width: 100%;
+    min-height: 166px;
+}
+
 #spritz_container{
     width: 50%;
     margin-left: 25%;
