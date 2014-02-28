@@ -13,7 +13,7 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999999;
+    z-index: 99999999999999999;
 }
 
 #spritz_spacer{
@@ -71,6 +71,7 @@ body{
 
 #spritz_selector{
     float: left;
+    width: auto;
 }
 
 .invisible{
