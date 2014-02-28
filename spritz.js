@@ -11,7 +11,7 @@ function create_spritz(){
 
      spritz_loader = function() {
 
-        $.get("https://raw.github.com/Miserlou/OpenSpritz/master/spritz.html",function(data){
+        $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html",function(data){
 
             console.log(data);
 
