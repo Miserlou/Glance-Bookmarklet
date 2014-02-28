@@ -79,7 +79,7 @@ function spritzify(input){
     var wpm = parseInt($("#spritz_selector").val(), 10);
     var ms_per_word = 60000/wpm;
 
-    var all_words = input.split(' ');
+    var all_words = input.split(/\s+/);
 
     var word = '';
     var result = '';
