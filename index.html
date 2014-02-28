@@ -3,15 +3,7 @@
 <meta charset="utf-8"></meta>
     <head>
         <title>OpenSpritz</title>
-
-        <style>
-        #container{
-            width: 50%;
-            margin-left: 25%;
-            margin-right: 25%;
-        }
-        </style>
-
+		<link href='index.css' rel='stylesheet' type='text/css'>   
     </head>
 
     <body>
@@ -20,10 +12,13 @@
 
             <h1>A Nice Cup of Tea</h1>
             <h2>George Orwell, 12 January 1946</h2>
-
-            <button onclick="javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.js'; script.onload=cb; document.body.appendChild(script);})();">
-                OpenSpritz this!
-            </button>
+			
+			<div class='button'>
+				<a href="javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.js'; script.onload=cb; document.body.appendChild(script);})();">
+					OpenSpritz this!
+				<a />
+			</div>
+			
 
             <br /><br />
 
