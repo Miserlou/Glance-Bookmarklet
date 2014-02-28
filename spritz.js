@@ -13,9 +13,10 @@ function create_spritz(){
 
         $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html",function(data){
 
-            console.log(data);
+            console.log("Got data..");
 
             if (!($("#spritz_container").length) ) {
+                console.log("Prepending data..");
                 $("body").prepend(data);
             }
 
