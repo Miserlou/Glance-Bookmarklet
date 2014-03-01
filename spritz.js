@@ -64,7 +64,7 @@ function spritz(){
         return;
     }
 
-    var selection = getSelectionHtml();
+    var selection = getSelectionText();
     if(selection){
         spritzify(selection);
     }
@@ -192,8 +192,8 @@ function pivot(word){
 
 // Get the currently selected text, if any.
 // Shameless pinched from StackOverflow.
-function getSelectionHtml() {
-    var html = "";
+function getSelectionText() {
+    var text = "";
     if (typeof window.getSelection != "undefined") {
         var sel = window.getSelection();
         if (sel.rangeCount) {
@@ -201,18 +201,18 @@ function getSelectionHtml() {
             for (var i = 0, len = sel.rangeCount; i < len; ++i) {
                 container.appendChild(sel.getRangeAt(i).cloneContents());
             }
-            html = container.innerHTML;
+            text = container.innerText || container.textContent;
         }
     } else if (typeof document.selection != "undefined") {
         if (document.selection.type == "Text") {
-            html = document.selection.createRange().htmlText;
+            text = document.selection.createRange().text;
         }
     }
-    if(html === ""){
+    if(text === ""){
         return false;
     }
     else{
-        return html;
+        return text;
     }
 }
 
