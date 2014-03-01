@@ -1,16 +1,26 @@
 function spritzify(input, output, wpm){
-    var words_per_minute = wpm;
     var ms_per_word = 60000/wpm;
 
     var all_words = input.split(' ');
 
-    var word = '';
-    var result = '';
+    centerWord(all_words);
 
+    function showWord(word, position){
+        var p = pivot(word);
+            $(output).html(p);
+        if(all_words.length > position){
+            setTimeout(function(x){ return showWord(all_words[x++], x)}, ms_per_word, position);
+        }
+    }
 
-    // Preprocess words
-    var temp_words = all_words.slice(0); // copy Array
+    // Set the timers!
+    setTimeout(function(x){ return showWord(all_words[x], x); }, ms_per_word , 0);
+    
+}
+
+function centerWord(all_words){
     var t = 0;
+    var temp_words = all_words.slice(0); // copy Array
 
     for (var i=0; i<all_words.length; i++){
 
@@ -18,16 +28,14 @@ function spritzify(input, output, wpm){
             temp_words[t] = all_words[i].replace('.', '•');
         }
 
-        // Double up on long words and words with commas.
-        if((all_words[i].indexOf(',') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf('-') != -1 || all_words[i].indexOf('(') != -1|| all_words[i].length > 8) && all_words[i].indexOf('.') == -1){
+        if(isSubset(all_words[i])){
             temp_words.splice(t+1, 0, all_words[i]);
             temp_words.splice(t+1, 0, all_words[i]);
             t++;
             t++;
         }
 
-        // Add an additional space after punctuation.
-        if(all_words[i].indexOf('.') != -1 || all_words[i].indexOf('!') != -1 || all_words[i].indexOf('?') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf(';') != -1|| all_words[i].indexOf(')') != -1){
+        if(isEnd(all_words[i])){
             temp_words.splice(t+1, 0, ".");
             temp_words.splice(t+1, 0, ".");
             temp_words.splice(t+1, 0, ".");
@@ -39,19 +47,15 @@ function spritzify(input, output, wpm){
         t++;
 
     }
-    all_words = temp_words.slice(0);
 
-    // Set the timers!
-    for (var i=0; i<all_words.length; i++){
-        setTimeout(function(x) { 
-            return function() { 
+}
 
-                var p = pivot(all_words[x]);
-                $(output).html(p);
+function isSubset(word){
+    return (word.indexOf(',') != -1 || word.indexOf(':') != -1 || word.indexOf('-') != -1 || word.indexOf('(') != -1|| word.length > 8) && word. indexOf('.') == -1;
+}
 
-        }; }(i), ms_per_word * i);
-        
-    }
+function isEnd(word){
+    return word.indexOf('.') != -1 || word.indexOf('!') != -1 || word.indexOf('?') != -1 || word.indexOf(':') != -1 || word.indexOf(';') != -1|| word.indexOf(')') != -1;
 }
 
 function pivot(word){
