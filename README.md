@@ -8,6 +8,15 @@ OpenSpritz is an extremely crude implementation of [Spritz](http://www.spritzinc
 
 To install OpenSpritz, follow [this guide at **gun.io**](https://gun.io/blog/openspritz-a-free-speed-reading-bookmarklet).
 
+## Features
+
+* Spritz-type speed reading
+* Word length and grammar-aware speed reading
+* WPM selector
+* Cross-browser bookmarklet
+* Text-selection aware
+* Readabilty-based article extraction
+
 ## Contributing
 
 OpenSpritz needs you! If you find bugs, have feature requests, or have other needs, please help out!
@@ -20,8 +29,8 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 
 ### Contributors
 
-    * [Rich Jones](https://github.com/Miserlou)
-    * [Nick R](https://github.com/niroyb)
+* [Rich Jones](https://github.com/Miserlou)
+* [Nick R](https://github.com/niroyb)
 
 ## Sister Projects
 
