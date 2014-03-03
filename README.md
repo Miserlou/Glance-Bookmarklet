@@ -10,7 +10,7 @@ To install OpenSpritz, follow [this guide at **gun.io**](https://gun.io/blog/ope
 
 ## Contributing
 
-OpenSpritz needs you! If you find bugs, have feature requests.
+OpenSpritz needs you! If you find bugs, have feature requests, or have other needs, please help out!
 
 The best way to contribute is to start a new ticket, or to work on an existing ticket. If you find a website which doesn't work with OpenSpritz, [add it to this ticket](https://github.com/Miserlou/OpenSpritz/issues/8) so that it can be diagnosed and fixed.
 
