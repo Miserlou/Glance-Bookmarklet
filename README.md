@@ -35,6 +35,7 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 ## Sister Projects
 
 * [OpenSpritz-Android](https://github.com/OnlyInAmerica/OpenSpritz-Android) by @OnlyInAmerica 
+* [speedread](https://github.com/pasky/speedread) - A terminal Spritzer. by @pasky
 
 #### A Note About the Name
 
