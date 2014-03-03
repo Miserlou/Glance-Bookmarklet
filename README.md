@@ -38,4 +38,4 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 
 #### A Note About the Name
 
-OpenSpritz has nothing to do with [Spritz Incorporated](http://www.spritzinc.com/). This is an open source, community created project. _(Please don't send us a DMCA take down request! That'll only backfire on you anyway.)_
+OpenSpritz has nothing to do with [Spritz Incorporated](http://www.spritzinc.com/). This is an open source, community created project, made with love because Spritz is such an awesome technique for reading with. _(Please don't send us a DMCA take down request! That'll only backfire on you anyway. We love you.)_
