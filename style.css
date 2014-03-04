@@ -54,6 +54,10 @@ body{
 }
 
 #notch{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #DDDDDD;    
     margin-top: 9px;
     padding-top: 12px;
 }
@@ -81,10 +85,38 @@ body{
 
 .start{
     color: #333333;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
 }
 .pivot{
     color: #DE0000;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
 }
 .end{
     color: #333333;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+}
+
+.spritz_start{
+    color: #333333;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+}
+.spritz_pivot{
+    color: #DE0000;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+}
+.spritz_end{
+    color: #333333;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
 }
