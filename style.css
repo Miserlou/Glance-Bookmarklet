@@ -1,0 +1,90 @@
+body{
+    margin: 0px;
+}
+
+#spritz_holder{
+    width: 100%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    background-color: #ffffff;
+    min-height: 166px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999999999999;
+}
+
+#spritz_spacer{
+    width: 100%;
+    min-height: 210px;
+}
+
+#spritz_container{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #ffffff;
+    line-height: 43px;
+
+}
+
+#spritz_result{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    min-height: 40px;
+}
+
+#guide_top{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #DDDDDD;
+}
+
+#guide_bottom{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #DDDDDD;
+}
+
+#notch{
+    margin-top: 9px;
+    padding-top: 12px;
+}
+
+#spritz_credits{
+    float: right;
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-size: 13px;
+}
+
+#spritz_credits a{
+    color: #dddddd;
+    text-decoration: none;
+}
+
+#spritz_selector{
+    float: left;
+    width: auto;
+}
+
+.invisible{
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #ffffff;
+}
+
+.start{
+    color: #333333;
+}
+.pivot{
+    color: #DE0000;
+}
+.end{
+    color: #333333;
+}
