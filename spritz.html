@@ -1,0 +1,65 @@
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<link href='https://miserlou.github.io/OpenSpritz/style.css' rel='stylesheet' type='text/css'>        
+
+<div id="spritz_holder">
+        <div id="spritz_container">
+
+            <div id="guide_top">
+――――――――――<span id="notch">ф</span>―――――――――――
+            </div>
+
+            <div id="spritz_result">
+                Choose a WPM to start.
+            </div>
+
+            <div id="guide_bottom">
+――――――――――――――――――――――
+            </div>
+
+            <select id="spritz_selector">
+              <option value="0">Select WPM</option>
+              <option value="200">200wpm</option>
+              <option value="300">300wpm</option>
+              <option value="350">350wpm</option>
+              <option value="400">400wpm</option>
+              <option value="450">450wpm</option>
+              <option value="500">500wpm</option>
+              <option value="550">550wpm</option>
+              <option value="600">600wpm</option>
+              <option value="650">650wpm</option>
+              <option value="700">700wpm</option>
+              <option value="750">750wpm</option>
+              <option value="800">800wpm</option>
+              <option value="850">850wpm</option>
+              <option value="900">900wpm</option>
+              <option value="950">950wpm</option>
+            </select>
+
+            <span id="spritz_credits">
+              <a href="http://github.com/Miserlou/OpenSpritz">
+                <i>OpenSpritz</i>
+              </a>
+              <a href="" onclick="hide_spritz(); return false;">
+                <i>[x]</i>
+              </a>
+            </span>
+    </div>
+</div>
+
+<div id="spritz_spacer">
+</div>
+
+<script type='text/javascript'>
+$( document ).ready(function() {
+
+    $('#spritz_selector').on('change', function (e) {
+
+        clearTimeouts();
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        var input = $('#spritz_me').text();
+        var rez = spritz();
+
+    });
+});
+</script>
