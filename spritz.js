@@ -12,7 +12,12 @@ function create_spritz(){
 
      spritz_loader = function() {
 
+        console.log("Loading..");
+
         $.get("https://miserlou.github.io/OpenSpritz/spritz.html", function(data){
+
+            console.log("GOT DATA!");
+            console.log("DATA");
 
             if (!($("#spritz_container").length) ) {
                 $("body").prepend(data);
