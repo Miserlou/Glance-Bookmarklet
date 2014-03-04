@@ -7,28 +7,26 @@
 // Please don't abuse this.
 var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
 
+// Create the view from the remote resource.
 function create_spritz(){
 
      spritz_loader = function() {
 
-        $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html",function(data){
-
-            console.log("Got data..");
+        $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
 
             if (!($("#spritz_container").length) ) {
-                console.log("Prepending data..");
                 $("body").prepend(data);
             }
-
         },'html');
     };
 
     load_jq(spritz_loader);
-
 }
 
+// jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
+// This is pretty fucked and should be replaced. Is there anyway we can just force 
+// the latest jQ? I wouldn't have a problem with that.
 function load_jq(spritz_loader){
-    // jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
 
     // the minimum version of jQuery we want
     var v = "1.11.0";
@@ -56,7 +54,8 @@ function hide_spritz(){
     $('#spritz_holder').slideUp();
 }
 
-// Entry point
+// Entry point to the beef.
+// Gets the WPM and the selected text, if any.
 function spritz(){
 
     var wpm = parseInt($("#spritz_selector").val(), 10);
@@ -79,6 +78,7 @@ function spritzify(input){
     var wpm = parseInt($("#spritz_selector").val(), 10);
     var ms_per_word = 60000/wpm;
 
+    // Split on any spaces.
     var all_words = input.split(/\s+/);
 
     var word = '';
@@ -135,6 +135,7 @@ function spritzify(input){
 function pivot(word){
     var length = word.length;
 
+    // Longer words are "right-weighted" for easier readability.
     if(length<6){
 
         var bit = 1;
@@ -219,8 +220,6 @@ function getSelectionText() {
 // Uses the Readability API to get the juicy content of the current page.
 function spritzifyURL(){
     var url = document.URL;
-    // var url = "http://www.theguardian.com/world/2014/feb/27/gchq-nsa-webcam-images-internet-yahoo";
-    // var url = "http://www.gq.com/sports/profiles/201202/david-diamante-interview-cigar-lounge-brooklyn-new-jersey-nets?currentPage=all";
 
     $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
     function (data) {
