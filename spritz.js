@@ -248,7 +248,7 @@ function spritzifyURL(){
         text_content = text_content.replace(/\?/g, '? ');
         text_content = text_content.replace(/\!/g, '! ');
         spritzify(text_content);
-    });
+    }).error(function() { $('#spritz_result').html("Article extraction failed. Try selecting text instead."); });
 
 }
 
