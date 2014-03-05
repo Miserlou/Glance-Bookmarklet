@@ -220,7 +220,7 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
+    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
     function (data) {
 
         if(data.error){
