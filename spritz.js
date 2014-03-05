@@ -224,6 +224,11 @@ function spritzifyURL(){
     $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
     function (data) {
 
+        if(data.error){
+            $('#spritz_result').html("Article extraction failed. Try selecting text instead.");
+            return;
+        }
+
         var title = '';
         if(data.title !== ""){
             title = data.title + ". ";
