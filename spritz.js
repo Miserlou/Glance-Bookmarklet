@@ -12,12 +12,7 @@ function create_spritz(){
 
      spritz_loader = function() {
 
-        console.log("Loading..");
-
         $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
-
-            console.log("GOT DATA!");
-            console.log("DATA");
 
             if (!($("#spritz_container").length) ) {
                 $("body").prepend(data);
@@ -165,10 +160,10 @@ function pivot(word){
         }
 
         var result;
-        result = "<span class='start'>" + start.slice(0, start.length -1);
-        result = result + "</span><span class='pivot'>";
+        result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
+        result = result + "</span><span class='spritz_pivot'>";
         result = result + start.slice(start.length-1, start.length);
-        result = result + "</span><span class='end'>";
+        result = result + "</span><span class='spritz_end'>";
         result = result + end;
         result = result + "</span>";
     }
@@ -182,10 +177,10 @@ function pivot(word){
         var end = word.slice(word.length/2, word.length);
 
         var result;
-        result = "<span class='start'>" + start.slice(0, start.length -1);
-        result = result + "</span><span class='pivot'>";
+        result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
+        result = result + "</span><span class='spritz_pivot'>";
         result = result + start.slice(start.length-1, start.length);
-        result = result + "</span><span class='end'>";
+        result = result + "</span><span class='spritz_end'>";
         result = result + end;
         result = result + "</span>";
 
@@ -228,6 +223,11 @@ function spritzifyURL(){
 
     $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
     function (data) {
+
+        if(data.error){
+            $('#spritz_result').html("Article extraction failed. Try selecting text instead.");
+            return;
+        }
 
         var title = '';
         if(data.title !== ""){
