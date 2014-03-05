@@ -1,4 +1,3 @@
-
 // spritz.js
 // A JavaScript Speed Reader
 // rich@gun.io
@@ -240,7 +239,7 @@ function spritzifyURL(){
         }
 
         var body = jQuery(data.content).text(); // Textify HTML content.
-        body = $.trim(body); // Trip trailing and leading whitespace.
+        body = $.trim(body); // Trim trailing and leading whitespace.
         body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
 
         var text_content = title + author + body;
