@@ -57,6 +57,12 @@ function hide_spritz(){
     $('#spritz_container').slideUp();
     $('#spritz_holder').slideUp();
 }
+function show_spritz(){
+    $('#spritz_spacer').slideDown();
+    $('#spritz_container').slideDown();
+    $('#spritz_holder').slideDown();
+    $('#spritz_selector').val(0);
+}
 
 // Entry point to the beef.
 // Gets the WPM and the selected text, if any.
