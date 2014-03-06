@@ -28,7 +28,7 @@ function create_spritz(){
 function load_jq(spritz_loader){
 
     // the minimum version of jQuery we want
-    var v = "1.11.0";
+    var v = "1.7.0";
 
     // check prior inclusion and version
     if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
@@ -91,7 +91,7 @@ function spritzify(input){
     for (var i=0; i<all_words.length; i++){
 
         if(all_words[i].indexOf('.') != -1){
-            temp_words[t] = all_words[i].replace('.', '•');
+            temp_words[t] = all_words[i].replace('.', '&#8226;');
         }
 
         // Double up on long words and words with commas.
@@ -220,7 +220,7 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + readability_token +"&callback=?",
+    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
     function (data) {
 
         if(data.error){
