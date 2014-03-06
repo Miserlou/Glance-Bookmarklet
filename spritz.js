@@ -308,6 +308,9 @@ function clearTimeouts(){
 // Let strings repeat themselves,
 // because JavaScript isn't as awesome as Python.
 String.prototype.repeat = function( num ){
-    return new Array( num + 1 ).join( this );
+    if (num > 0) {
+        return new Array( num + 1 ).join( this );
+    }
+    return [];
 }
 
