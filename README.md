@@ -11,6 +11,8 @@ blazingly fast." - [norswap](https://news.ycombinator.com/item?id=7349966), Hack
 
 * "Super cool reading tool that helps you read at 800wpm. Kind of like watching television, only with words." - [@janeka](https://twitter.com/janeka/status/441375832309637121), Twitter
 
+* "Crushing my inbox with @GUNdotIO's OpenSpritz. If only it extracted data from my brain as well." - [@climb23k](https://twitter.com/climb23k/status/441330307636031488), Twitter
+
 ## Installation
 
 To install OpenSpritz, follow [this guide at **gun.io**](https://gun.io/blog/openspritz-a-free-speed-reading-bookmarklet).
