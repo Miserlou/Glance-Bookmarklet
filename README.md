@@ -4,6 +4,13 @@
 
 OpenSpritz is an extremely crude implementation of [Spritz](http://www.spritzinc.com/) in JavaScript. It works as a bookmarklet to add Spritz-type speed reading to every page.
 
+### Testimonials
+
+* "I'm not easily impressed, but this blew me away. You can have very good understanding of the text and still read
+blazingly fast." - [norswap](https://news.ycombinator.com/item?id=7349966), HackerNews
+
+* "Super cool reading tool that helps you read at 800wpm. Kind of like watching television, only with words." - [@janeka](https://twitter.com/janeka/status/441375832309637121), Twitter
+
 ## Installation
 
 To install OpenSpritz, follow [this guide at **gun.io**](https://gun.io/blog/openspritz-a-free-speed-reading-bookmarklet).
@@ -38,13 +45,6 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 * [SpritzerTextView](https://github.com/andrewgiang/SpritzerTextView) - An Android Spritz View by [@andrewgiang](https://github.com/andrewgiang)
 * [speedread](https://github.com/pasky/speedread) - A terminal Spritzer. by [@pasky](https://github.com/pasky)
 * [jetzt](https://github.com/ds300/jetzt) - jetzt, a Spritz Chrome extension by [@ds300](https://github.com/ds300)
-
-### Testimonials
-
-* "I'm not easily impressed, but this blew me away. You can have very good understanding of the text and still read
-blazingly fast." - [norswap](https://news.ycombinator.com/item?id=7349966), HackerNews
-
-* "Super cool reading tool that helps you read at 800wpm. Kind of like watching television, only with words." - [@janeka](https://twitter.com/janeka/status/441375832309637121), Twitter
 
 #### A Note About the Name
 
