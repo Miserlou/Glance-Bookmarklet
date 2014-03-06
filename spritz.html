@@ -1,4 +1,3 @@
-<div>
 <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 <link href='https://rawgithub.com/Miserlou/OpenSpritz/master/style.css' rel='stylesheet' type='text/css'>        
 
@@ -36,9 +35,6 @@
               <option value="950">950wpm</option>
             </select>
 
-            <input type="range" id="spritz_slider" min="1" max="10" value="1">
-            <button type="button" id="spritz_toggle">Play</button>
-
             <span id="spritz_credits">
               <a href="http://github.com/Miserlou/OpenSpritz">
                 <i>OpenSpritz</i>
@@ -52,4 +48,18 @@
 
 <div id="spritz_spacer">
 </div>
-</div>
+
+<script type='text/javascript'>
+$( document ).ready(function() {
+
+    $('#spritz_selector').on('change', function (e) {
+
+        clearTimeouts();
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        var input = $('#spritz_me').text();
+        var rez = spritz();
+
+    });
+});
+</script>
