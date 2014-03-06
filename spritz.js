@@ -28,7 +28,7 @@ function create_spritz(){
 function load_jq(spritz_loader){
 
     // the minimum version of jQuery we want
-    var v = "1.11.0";
+    var v = "1.7.0";
 
     // check prior inclusion and version
     if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
