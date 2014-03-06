@@ -17,7 +17,7 @@ body{
     z-index: 99999999999999999;
 }
 
-#spritz_holder{
+#spritz_holder div{
     margin: auto;
 }
 
