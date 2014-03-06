@@ -61,6 +61,7 @@ function show_spritz(){
     $('#spritz_spacer').slideDown();
     $('#spritz_container').slideDown();
     $('#spritz_holder').slideDown();
+    $('#spritz_selector').val(0);
 }
 
 // Entry point to the beef.
