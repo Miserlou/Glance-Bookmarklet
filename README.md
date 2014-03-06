@@ -44,7 +44,7 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 * "I'm not easily impressed, but this blew me away. You can have very good understanding of the text and still read
 blazingly fast." - [norswap](https://news.ycombinator.com/item?id=7349966), HackerNews
 
-* "Super cool reading tool that helps you read at 800wpm. Kind of like watching television, only with words." - [@janeka](441375832309637121), Twitter
+* "Super cool reading tool that helps you read at 800wpm. Kind of like watching television, only with words." - [@janeka](https://twitter.com/janeka/status/441375832309637121), Twitter
 
 #### A Note About the Name
 
