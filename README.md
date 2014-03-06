@@ -39,6 +39,11 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 * [speedread](https://github.com/pasky/speedread) - A terminal Spritzer. by [@pasky](https://github.com/pasky)
 * [jetzt](https://github.com/ds300/jetzt) - jetzt, a Spritz Chrome extension by [@ds300](https://github.com/ds300)
 
+### Testimonials
+
+* "I'm not easily impressed, but this blew me away. You can have very good understanding of the text and still read
+blazingly fast." - [norswap](https://news.ycombinator.com/item?id=7349966), HackerNews
+
 #### A Note About the Name
 
 OpenSpritz has nothing to do with [Spritz Incorporated](http://www.spritzinc.com/). This is an open source, community created project, made with love because Spritz is such an awesome technique for reading with. _(Please don't send us a DMCA take down request! That'll only backfire on you anyway. We love you.)_
