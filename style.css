@@ -34,23 +34,21 @@ body{
     text-align: center;
     font-size: 32px;
     font-family: 'Droid Sans Mono', sans-serif;
-    padding-top: 9px;
-    padding-bottom: 9px;
     min-height: 40px;
+    padding: 20px 0;
+
+    border-top: 4px solid #DDDDDD;
+    border-bottom: 4px solid #DDDDDD;
 }
 
-#guide_top{
+#spritz_progress_wrapper {
     text-align: center;
-    font-size: 32px;
-    font-family: 'Droid Sans Mono', sans-serif;
-    color: #DDDDDD;
 }
 
-#guide_bottom{
-    text-align: center;
-    font-size: 32px;
-    font-family: 'Droid Sans Mono', sans-serif;
-    color: #DDDDDD;
+#spritz_progress_bar {
+    margin: auto;
+    margin-top: 20px;
+    border-bottom: 1px solid blue;
 }
 
 #notch{

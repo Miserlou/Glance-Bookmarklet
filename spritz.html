@@ -1,20 +1,18 @@
+<div>
 <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
-<link href='https://rawgithub.com/Miserlou/OpenSpritz/master/style.css' rel='stylesheet' type='text/css'>        
+<link href='https://rawgithub.com/Miserlou/OpenSpritz/master/style.css' rel='stylesheet' type='text/css'>
+<!--<link href='/style.css' rel='stylesheet' type='text/css'>-->
 
 <div id="spritz_holder">
         <div id="spritz_container">
 
-            <div id="guide_top">
-――――――――――<span id="notch">&#1092;</span>―――――――――――
+            <div id="spritz_progress_wrapper">
+              <div style="width:100%" id="spritz_progress_bar"></div>
             </div>
-
             <div id="spritz_result">
                 Choose a WPM to start.
             </div>
-
-            <div id="guide_bottom">
-――――――――――――――――――――――
-            </div>
+            
 
             <select id="spritz_selector">
               <option value="0">Select WPM</option>
@@ -35,6 +33,9 @@
               <option value="950">950wpm</option>
             </select>
 
+            <input type="range" id="spritz_slider" min="1" max="10" value="1">
+            <button type="button" id="spritz_toggle">Play</button>
+
             <span id="spritz_credits">
               <a href="http://github.com/Miserlou/OpenSpritz">
                 <i>OpenSpritz</i>
@@ -48,18 +49,4 @@
 
 <div id="spritz_spacer">
 </div>
-
-<script type='text/javascript'>
-$( document ).ready(function() {
-
-    $('#spritz_selector').on('change', function (e) {
-
-        clearTimeouts();
-        var optionSelected = $("option:selected", this);
-        var valueSelected = this.value;
-        var input = $('#spritz_me').text();
-        var rez = spritz();
-
-    });
-});
-</script>
+</div>
