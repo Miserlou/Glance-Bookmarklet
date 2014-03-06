@@ -16,6 +16,11 @@ function create_spritz(){
             if (!($("#spritz_container").length) ) {
                 $("body").prepend(data);
             }
+
+            // I suppose it's better to add that to spritz.html
+            $('#spritz_selector')
+            .after('<input type="range" id="spritz_slider" min="1" max="10" value="1">')
+            .after('<button type="button" id="spritz_toggle">Play</button>');
         },'html');
     };
 
@@ -23,7 +28,7 @@ function create_spritz(){
 }
 
 // jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
-// This is pretty fucked and should be replaced. Is there anyway we can just force 
+// This is pretty fucked and should be replaced. Is there anyway we can just force
 // the latest jQ? I wouldn't have a problem with that.
 function load_jq(spritz_loader){
 
@@ -115,18 +120,54 @@ function spritzify(input){
         t++;
 
     }
+
     all_words = temp_words.slice(0);
 
-    // Set the timers!
-    for (var i=0; i<all_words.length; i++){
-        setTimeout(function(x) { 
-            return function() { 
+    var currentWord = 0;
+    var running = false;
+    var spritz_timers = new Array();
 
-                var p = pivot(all_words[x]);
-                $('#spritz_result').html(p);
+    $('#spritz_toggle').click(function() {
+        if(running) {
+            stopSpritz();
+        } else {
+            startSpritz();
+        }
+    });
 
-        }; }(i), ms_per_word * i);
-        
+    $('#spritz_slider').change(function() {
+        updateValues($('#spritz_slider').val() - 1);
+    });
+
+    function updateValues(i) {
+        $('#spritz_slider').val(i);
+        var p = pivot(all_words[i]);
+        $('#spritz_result').html(p);
+        currentWord = i;
+    }
+
+    function startSpritz() {
+        $('#spritz_toggle').html('Stop');
+        running = true;
+        // Set slider max value
+        $('#spritz_slider').attr("max", all_words.length);
+
+        spritz_timers.push(setInterval(function() {
+            updateValues(currentWord);
+            currentWord++;
+            if(currentWord >= all_words.length) {
+                currentWord = 0;
+                stopSpritz();
+            }
+        }, ms_per_word));
+    }
+
+    function stopSpritz() {
+        for(var i = 0; i < spritz_timers.length; i++) {
+            clearTimeout(spritz_timers[i]);
+        }
+        $('#spritz_toggle').html('Play');
+        running = false;
     }
 }
 
