@@ -131,6 +131,9 @@ function spritzify(input){
     });
 
     function updateValues(i) {
+        var progressBar = document.getElementById("spritz_progress_bar");
+
+        progressBar.style.width = (100 - ((i / progressBar.max) * 100)) + "%";
         document.getElementById("spritz_slider").value = i;
         var p = pivot(all_words[i]);
 
@@ -145,6 +148,8 @@ function spritzify(input){
         running = true;
         // Set slider max value
         document.getElementById("spritz_slider").max = all_words.length;
+        document.getElementById("spritz_progress_bar").max = all_words.length;
+
 
         spritz_timers.push(setInterval(function() {
             updateValues(currentWord);
