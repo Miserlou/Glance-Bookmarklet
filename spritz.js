@@ -3,9 +3,6 @@
 // rich@gun.io
 // https://github.com/Miserlou/OpenSpritz
 
-// Please don't abuse this.
-var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
-
 // Create the view from the remote resource.
 function create_spritz(){
 
@@ -261,7 +258,7 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
+    $.getJSON("http://sample-rdb-proxy.appspot.com/?url="+ encodeURIComponent(url) +"&callback=callback",
     function (data) {
 
         if(data.error){
