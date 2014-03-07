@@ -259,7 +259,7 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    $.getJSON("http://sample-rdb-proxy.appspot.com/?url="+ encodeURIComponent(url) +"&callback=callback",
+    $.getJSON("http://sample-rdb-proxy.appspot.com/?url="+ encodeURIComponent(url) +"&callback=?",
     function (data) {
 
         if(data.error){
