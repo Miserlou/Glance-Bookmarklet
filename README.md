@@ -34,6 +34,12 @@ OpenSpritz currently needs a little more love to make it work with JSONP and nee
 
 Once you have tested your changes and confirmed they work, send a pull request. Add yourself to the list of contributors below as well!
 
+### Important note!
+
+Please be sure to submit your pull requests to the _dev_ branch, rather than _master_. Since the currently deployed
+version depends on accessing the raw resources from Github master, all changes must be reviewed for functionality and
+security testing before they can be merged directly. Thank you!
+
 ### Contributors
 
 * [Rich Jones](https://github.com/Miserlou)
@@ -45,6 +51,8 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 * [SpritzerTextView](https://github.com/andrewgiang/SpritzerTextView) - An Android Spritz View by [@andrewgiang](https://github.com/andrewgiang)
 * [speedread](https://github.com/pasky/speedread) - A terminal Spritzer. by [@pasky](https://github.com/pasky)
 * [jetzt](https://github.com/ds300/jetzt) - jetzt, a Spritz Chrome extension by [@ds300](https://github.com/ds300)
+* [spread0r](https://github.com/xypiie/spread0r) (previously _gritz_) - A Spritz implementation in Perl by [@xypiee](https://github.com/xypiie/)
+* [Spray](https://github.com/chaimpeck/spray) - A  
 
 #### A Note About the Name
 
