@@ -23,7 +23,7 @@
             javascript:(function(src, cb){var s = document.createElement('script');s.charset = 'UTF-8';document.body.insertBefore(s, document.body.firstChild);s.src = src;if(typeof cb === 'function'){s.onload = cb;s.onreadystatechange = function(){(/loaded|complete/).test(s.readyState)&&cb(s);};}return s;}('http://github.com/pure/pure/raw/master/libs/pure.js', function(e){alert('loaded');})) -->
 
             <div class='button'>
-                <a href="javascript:(function(){ cb = function(){ create_spritz(); }; var script=document.createElement('SCRIPT');script.src='https://miserlou.github.io/OpenSpritz/spritz.js?callback=cb'; script.onload=cb; document.body.appendChild(script);})();">
+                <a href="javascript:(function(){ if(typeof cb == 'undefined'){ cb = function(){ create_spritz(); }; var script=document.createElement('SCRIPT');script.src='./spritz.js?callback=cb'; script.onload=cb; document.body.appendChild(script);}else{show_spritz();}})();">
 
                 <!--<a href="javascript:(function(){ cb = function(){ create_spritz(); }; var script=document.createElement('SCRIPT');script.src='/spritz.js?callback=cb'; script.onload=cb; document.body.appendChild(script);})();">-->
                     OpenSpritz this!

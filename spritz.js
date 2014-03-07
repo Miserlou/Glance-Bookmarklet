@@ -10,7 +10,7 @@ function create_spritz(){
 
      spritz_loader = function() {
         getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
-        //getURL("/spritz.html", function(data){
+        //getURL("./spritz.html", function(data){
 
             var spritzContainer = document.getElementById("spritz_container");
 
@@ -47,6 +47,12 @@ function hide_spritz(){
     document.getElementById("spritz_spacer").style.display = "none";
     document.getElementById("spritz_container").style.display = "none";
     document.getElementById("spritz_holder").style.display = "none";
+}
+
+function show_spritz(){
+    document.getElementById("spritz_spacer").style.display = "block";
+    document.getElementById("spritz_container").style.display = "block";
+    document.getElementById("spritz_holder").style.display = "block";
 }
 
 // Entry point to the beef.
