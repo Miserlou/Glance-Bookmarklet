@@ -1,6 +1,39 @@
 body{
-    margin: 0px;
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    border-spacing: 0;
+    color: #000;
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.42rem;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
 }
+
+button, button:active, button:visited, button:focus {
+    font-size: .875em;
+    padding: .75em 1.3em;
+    background: #3e433e;
+    color: #fff;
+    border: 0;
+    margin: 0 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 0;
+    -webkit-box-shadow: 0;
+    -webkit-appearance: none;
+}
+
+button:hover {
+    background: #089e00;
+    color: #fff;
+}
+
 
 #spritz_holder{
     width: 100%;
@@ -27,15 +60,19 @@ body{
     margin-right: 25%;
     background-color: #ffffff;
     line-height: 43px;
+}
 
+#spritz_container input{
+    width: 100%;
 }
 
 #spritz_result{
-    text-align: center;
+    text-align: left;
     font-size: 32px;
     font-family: 'Droid Sans Mono', sans-serif;
     padding-top: 9px;
     padding-bottom: 9px;
+    padding-left: 98px;
     min-height: 40px;
 }
 
