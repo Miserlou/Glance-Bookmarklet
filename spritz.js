@@ -5,6 +5,7 @@
 
 // Please don't abuse this.
 var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
+var diffbot_token = '2efef432c72b5a923408e04353c39a7c';
 
 function create_spritz(){
 
@@ -247,7 +248,8 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    getURL("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
+    //getURL("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
+    getURL("https://api.diffbot.com/v2/article?url="+ encodeURIComponent(url) +"&token=" + diffbot_token +"&callback=?",
     function(data) {
         data = JSON.parse(data);
 
@@ -267,7 +269,7 @@ function spritzifyURL(){
         }
 
         var body = document.createElement("div");
-        body.innerHTML = data.content;
+        body.innerHTML = data.text;
         body = body.innerText; // Textify HTML content.
         body = body.trim(); // Trim trailing and leading whitespace.
         body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
