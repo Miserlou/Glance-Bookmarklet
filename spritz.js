@@ -147,7 +147,7 @@ function spritzify_go(input){
                 clearInterval(spritz_interval);
             }
 
-        }; , ms_per_word);
+        } , ms_per_word);
         
     }
 }
