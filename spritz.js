@@ -39,9 +39,9 @@ function load_jq(spritz_loader){
       var done = false;
       var script = document.createElement("script");
       script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
-      // https://github.com/tzuryby/jquery.hotkeys
+      // https://github.com/jeresig/jquery.hotkeys
       var script_keys = document.createElement("script");
-      script_keys.src = "https://rawgithub.com/tzuryby/jquery.hotkeys/master/jquery.hotkeys.js";
+      script_keys.src = "https://rawgithub.com/jeresig/jquery.hotkeys/master/jquery.hotkeys.js";
       
       script.onload = script.onreadystatechange = function(){
         if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
