@@ -19,7 +19,7 @@ function create_spritz(){
             }
         },'html');
         
-        $(document).bind('keydown', 'ctrl+a', function() {alert("worked")});
+        $(document).bind('keypress', 'ctrl+a', function() {alert("worked")});
         
     };
 
