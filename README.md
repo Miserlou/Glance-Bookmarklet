@@ -29,9 +29,7 @@ Once you have tested your changes and confirmed they work, send a pull request. 
 
 ## Bookmarklet
 
-[Bookmarklet](javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://miserlou.github.io/OpenSpritz/spritz.js?callback=cb?callback=cb'; script.onload=cb; document.body.appendChild(script);})();)
-
-[Bookmarklet](javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://raw.github.com/smorin/OpenSpritz/master/spritz.js; document.body.appendChild(script);})();)
+[Bookmarklet](https://rawgithub.com/smorin/OpenSpritz/master/bookmarklet.html)
 
 ```
 <a class="btn btn-large" href="javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://miserlou.github.io/OpenSpritz/spritz.js?callback=cb?callback=cb'; script.onload=cb; document.body.appendChild(script);})();"> OpenSpritz this!</a>
