@@ -146,10 +146,9 @@ function spritzify_go(input){
             } else {
                 clearInterval(spritz_interval);
             }
-
         } , ms_per_word);
         
-    }
+    
 }
 
 // The meat!
