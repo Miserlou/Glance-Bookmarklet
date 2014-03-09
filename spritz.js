@@ -11,20 +11,21 @@ function create_spritz(){
      spritz_loader = function() {
         //getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
 
-        alert("GETTING DATA");
+        //getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
+
+        // This won't work in Firefox because an old bug and won't work in Chrome because of security stuff:
+        //getURL("spritz.html", function(data){
 
         getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
-
-            alert("GOT DATA");
-
             var spritzContainer = document.getElementById("spritz_container");
 
             if (!spritzContainer) {
                 var ele = document.createElement("div");
+                data = data.replace(/(\r\n|\n|\r)/gm,"");
                 ele.innerHTML = data;
-                document.body.insertBefore(ele.firstChild, document.body.firstChild);
-            }
-            
+                document.body.insertBefore(ele, document.body.firstChild);
+            };
+
             document.getElementById("spritz_selector").addEventListener("change", function(e) {
                 clearTimeouts();
                 spritz();
