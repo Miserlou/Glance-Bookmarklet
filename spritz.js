@@ -263,6 +263,9 @@ function pivot(word){
     else{
 
         var tail = 22 - (word.length + 7);
+        if( tail < 0) {
+            tail = 0;
+        }
         word = '.......' + word + ('.'.repeat(tail));
 
         var start = word.slice(0, word.length/2);
