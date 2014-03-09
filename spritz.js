@@ -139,7 +139,6 @@ function spritzify(input){
         running = true;
 
         spritz_timers.push(setInterval(function() {
-            updateValues(currentWord);
             currentWord++;
             if(currentWord >= all_words.length) {
                 currentWord = 0;
