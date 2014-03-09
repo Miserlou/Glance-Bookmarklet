@@ -6,63 +6,59 @@
 // Please don't abuse this.
 var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
 
-// Create the view from the remote resource.
 function create_spritz(){
 
      spritz_loader = function() {
+        //getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
 
-        $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+        alert("GETTING DATA");
 
-            if (!($("#spritz_container").length) ) {
-                $("body").prepend(data);
+        getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
+
+            alert("GOT DATA");
+
+            var spritzContainer = document.getElementById("spritz_container");
+
+            if (!spritzContainer) {
+                var ele = document.createElement("div");
+                ele.innerHTML = data;
+                document.body.insertBefore(ele.firstChild, document.body.firstChild);
             }
-
-            // I suppose it's better to add that to spritz.html
-            $('#spritz_selector')
-            .after('<input type="range" id="spritz_slider" min="1" max="10" value="1">')
-            .after('<button type="button" id="spritz_toggle">Play</button>');
-        },'html');
+            
+            document.getElementById("spritz_selector").addEventListener("change", function(e) {
+                clearTimeouts();
+                spritz();
+            });
+        });
     };
 
-    load_jq(spritz_loader);
+    spritz_loader();
 }
 
-// jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
-// This is pretty fucked and should be replaced. Is there anyway we can just force
-// the latest jQ? I wouldn't have a problem with that.
-function load_jq(spritz_loader){
+function getURL(url, callback) {
+    var xmlhttp = new XMLHttpRequest();
 
-    // the minimum version of jQuery we want
-    var v = "1.7.0";
-
-    // check prior inclusion and version
-    if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
-      var done = false;
-      var script = document.createElement("script");
-      script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
-      script.onload = script.onreadystatechange = function(){
-        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-          done = true;
-          spritz_loader();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            callback(xmlhttp.responseText);
         }
-      };
-      document.getElementsByTagName("head")[0].appendChild(script);
-    } else{
-        spritz_loader();
     }
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }
 
 function hide_spritz(){
-    $('#spritz_spacer').slideUp();
-    $('#spritz_container').slideUp();
-    $('#spritz_holder').slideUp();
+    document.getElementById("spritz_spacer").style.display = "none";
+    document.getElementById("spritz_container").style.display = "none";
+    document.getElementById("spritz_holder").style.display = "none";
 }
 
 // Entry point to the beef.
 // Gets the WPM and the selected text, if any.
 function spritz(){
 
-    var wpm = parseInt($("#spritz_selector").val(), 10);
+    var wpm = parseInt(document.getElementById("spritz_selector").value, 10);
     if(wpm < 1){
         return;
     }
@@ -79,7 +75,7 @@ function spritz(){
 // The meat!
 function spritzify(input){
 
-    var wpm = parseInt($("#spritz_selector").val(), 10);
+    var wpm = parseInt(document.getElementById("spritz_selector").value, 10);
     var ms_per_word = 60000/wpm;
 
     // Split on any spaces.
@@ -127,7 +123,7 @@ function spritzify(input){
     var running = false;
     var spritz_timers = new Array();
 
-    $('#spritz_toggle').click(function() {
+    document.getElementById("spritz_toggle").addEventListener("click", function() {
         if(running) {
             stopSpritz();
         } else {
@@ -135,22 +131,25 @@ function spritzify(input){
         }
     });
 
-    $('#spritz_slider').change(function() {
-        updateValues($('#spritz_slider').val() - 1);
+    document.getElementById("spritz_slider").addEventListener("change", function() {
+        updateValues(document.getElementById("spritz_slider").value - 1);
     });
 
     function updateValues(i) {
-        $('#spritz_slider').val(i);
+        document.getElementById("spritz_slider").value = i;
         var p = pivot(all_words[i]);
-        $('#spritz_result').html(p);
+
+        document.getElementById("spritz_result").innerHTML = p;
         currentWord = i;
     }
 
     function startSpritz() {
-        $('#spritz_toggle').html('Stop');
+
+        document.getElementById("spritz_toggle").innerText = "Stop";
+
         running = true;
         // Set slider max value
-        $('#spritz_slider').attr("max", all_words.length);
+        document.getElementById("spritz_slider").max = all_words.length;
 
         spritz_timers.push(setInterval(function() {
             updateValues(currentWord);
@@ -166,7 +165,8 @@ function spritzify(input){
         for(var i = 0; i < spritz_timers.length; i++) {
             clearTimeout(spritz_timers[i]);
         }
-        $('#spritz_toggle').html('Play');
+
+        document.getElementById("spritz_toggle").innerText = "Play";
         running = false;
     }
 }
@@ -261,11 +261,12 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
-    function (data) {
+    getURL("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
+    function(data) {
+        data = JSON.parse(data);
 
         if(data.error){
-            $('#spritz_result').html("Article extraction failed. Try selecting text instead.");
+            document.getElementById("spritz_result").innerText = "Article extraction failed. Try selecting text instead.";
             return;
         }
 
@@ -279,8 +280,10 @@ function spritzifyURL(){
             author = "By " + data.author + ". ";
         }
 
-        var body = jQuery(data.content).text(); // Textify HTML content.
-        body = $.trim(body); // Trim trailing and leading whitespace.
+        var body = document.createElement("div");
+        body.innerHTML = data.content;
+        body = body.innerText; // Textify HTML content.
+        body = body.trim(); // Trim trailing and leading whitespace.
         body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
 
         var text_content = title + author + body;
@@ -309,5 +312,4 @@ function clearTimeouts(){
 // because JavaScript isn't as awesome as Python.
 String.prototype.repeat = function( num ){
     return new Array( num + 1 ).join( this );
-}
-
+};
