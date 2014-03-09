@@ -84,7 +84,7 @@ function spritz(){
 
 spritz_words = [""];
 spritz_index = 1;
-spritz_interval;
+spritz_interval = undefined;
 
 function spritzify(input){
     spritz_index = 1;
@@ -137,8 +137,10 @@ function spritzify_go(input){
     spritz_words = temp_words.slice(0);
 
     // Set the timers!
-    clearInterval(spritz_interval);
-    setInterval(function() { 
+    if (! spritz_interval === undefined ) {
+        clearInterval(spritz_interval);
+    }
+    spritz_interval= setInterval(function() { 
         if (spritz_index < spritz_words.length) {
                 var p = pivot(spritz_words[spritz_index]);
                 spritz_index = spritz_index + 1;
