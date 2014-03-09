@@ -85,7 +85,6 @@ function spritzify(input){
     var word = '';
     var result = '';
 
-
     // Preprocess words
     var temp_words = all_words.slice(0); // copy Array
     var t = 0;
@@ -121,7 +120,7 @@ function spritzify(input){
     all_words = temp_words.slice(0);
 
     var currentWord = 0;
-    var running = false;
+    var running = true;
     var spritz_timers = new Array();
 
     document.getElementById("spritz_toggle").addEventListener("click", function() {
@@ -132,25 +131,11 @@ function spritzify(input){
         }
     });
 
-    document.getElementById("spritz_slider").addEventListener("change", function() {
-        updateValues(document.getElementById("spritz_slider").value - 1);
-    });
-
-    function updateValues(i) {
-        document.getElementById("spritz_slider").value = i;
-        var p = pivot(all_words[i]);
-
-        document.getElementById("spritz_result").innerHTML = p;
-        currentWord = i;
-    }
-
     function startSpritz() {
 
         document.getElementById("spritz_toggle").innerText = "Stop";
 
         running = true;
-        // Set slider max value
-        document.getElementById("spritz_slider").max = all_words.length;
 
         spritz_timers.push(setInterval(function() {
             updateValues(currentWord);
