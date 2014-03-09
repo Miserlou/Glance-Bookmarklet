@@ -11,12 +11,16 @@ function create_spritz(){
 
      spritz_loader = function() {
 
-        $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+        //$.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+        $.get("https://rawgithub.com/SteveMorin/OpenSpritz/master/spritz.html", function(data){
 
             if (!($("#spritz_container").length) ) {
                 $("body").prepend(data);
             }
         },'html');
+        
+        $(document).bind('keydown', 'ctrl+a', alert("worked"));
+        
     };
 
     load_jq(spritz_loader);
@@ -35,6 +39,9 @@ function load_jq(spritz_loader){
       var done = false;
       var script = document.createElement("script");
       script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
+      // https://github.com/jeresig/jquery.hotkeys
+      var script_keys = document.createElement("script");
+      script_keys.src "https://github.com/jeresig/jquery.hotkeys/raw/master/jquery.hotkeys.js";
       script.onload = script.onreadystatechange = function(){
         if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
           done = true;
@@ -42,6 +49,7 @@ function load_jq(spritz_loader){
         }
       };
       document.getElementsByTagName("head")[0].appendChild(script);
+      document.getElementsByTagName("head")[0].appendChild(script_keys);
     } else{
         spritz_loader();
     }

@@ -27,6 +27,17 @@ OpenSpritz currently needs a little more love to make it work with JSONP and nee
 
 Once you have tested your changes and confirmed they work, send a pull request. Add yourself to the list of contributors below as well!
 
+## Bookmarklet
+
+[Bookmarklet](javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://miserlou.github.io/OpenSpritz/spritz.js?callback=cb?callback=cb'; script.onload=cb; document.body.appendChild(script);})();)
+
+[Bookmarklet](javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://raw.github.com/smorin/OpenSpritz/master/spritz.js; document.body.appendChild(script);})();)
+
+```
+<a class="btn btn-large" href="javascript:(function(){ cb = function(){ create_spritz();}; var script=document.createElement('SCRIPT');script.src='https://miserlou.github.io/OpenSpritz/spritz.js?callback=cb?callback=cb'; script.onload=cb; document.body.appendChild(script);})();"> OpenSpritz this!</a>
+
+```
+
 ### Contributors
 
 * [Rich Jones](https://github.com/Miserlou)
