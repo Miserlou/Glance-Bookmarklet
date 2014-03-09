@@ -20,7 +20,8 @@ function create_spritz(){
         },'html');
         
         //$(document).bind('keypress', 'ctrl+a', function() {alert("worked")});
-        jQuery(document).bind('keypress', 'Shift+p',function (evt){alert('shift+p'); return false; });
+        // Hot keys throws an error and seems to bind to every ket  instead of just shift
+        //jQuery(document).bind('keypress', 'Shift+p',function (evt){alert('shift+p'); return false; });
         
     };
 
@@ -81,8 +82,78 @@ function spritz(){
     }
 }
 
-// The meat!
+spritz_words = [""];
+spritz_index = 1;
+spritz_interval;
+
 function spritzify(input){
+    spritz_index = 1;
+    spritzify_go(input);
+}
+
+function spritzify_go(input){
+
+    var wpm = parseInt($("#spritz_selector").val(), 10);
+    var ms_per_word = 60000/wpm;
+
+    // Split on any spaces.
+    spritz_words = input.split(/\s+/);
+
+    var word = '';
+    var result = '';
+
+
+    // Preprocess words
+    var temp_words = spritz_words.slice(0); // copy Array
+    var t = 0;
+
+    for (var i=0; i<spritz_words.length; i++){
+
+        if(spritz_words[i].indexOf('.') != -1){
+            temp_words[t] = spritz_words[i].replace('.', '&#8226;');
+        }
+
+        // Double up on long words and words with commas.
+        if((spritz_words[i].indexOf(',') != -1 || spritz_words[i].indexOf(':') != -1 || spritz_words[i].indexOf('-') != -1 || spritz_words[i].indexOf('(') != -1|| spritz_words[i].length > 8) && spritz_words[i].indexOf('.') == -1){
+            temp_words.splice(t+1, 0, spritz_words[i]);
+            temp_words.splice(t+1, 0, spritz_words[i]);
+            t++;
+            t++;
+        }
+
+        // Add an additional space after punctuation.
+        if(spritz_words[i].indexOf('.') != -1 || spritz_words[i].indexOf('!') != -1 || spritz_words[i].indexOf('?') != -1 || spritz_words[i].indexOf(':') != -1 || spritz_words[i].indexOf(';') != -1|| spritz_words[i].indexOf(')') != -1){
+            temp_words.splice(t+1, 0, ".");
+            temp_words.splice(t+1, 0, ".");
+            temp_words.splice(t+1, 0, ".");
+            t++;
+            t++;
+            t++;
+        }
+
+        t++;
+
+    }
+    spritz_words = temp_words.slice(0);
+
+    // Set the timers!
+    clearInterval(spritz_interval);
+    setInterval(function() { 
+        if (spritz_index < spritz_words.length) {
+                var p = pivot(spritz_words[spritz_index]);
+                spritz_index = spritz_index + 1;
+                $('#spritz_result').html(p);
+            } else {
+                clearInterval(spritz_interval);
+            }
+
+        }; , ms_per_word);
+        
+    }
+}
+
+// The meat!
+function spritzify_orig(input){
 
     var wpm = parseInt($("#spritz_selector").val(), 10);
     var ms_per_word = 60000/wpm;
