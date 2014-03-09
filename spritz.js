@@ -41,7 +41,7 @@ function load_jq(spritz_loader){
       script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
       // https://github.com/tzuryby/jquery.hotkeys
       var script_keys = document.createElement("script");
-      script_keys.src = "https://rawgithub.com/tzuryby/jquery.hotkeys/blob/master/jquery.hotkeys.js";
+      script_keys.src = "https://rawgithub.com/tzuryby/jquery.hotkeys/master/jquery.hotkeys.js";
       
       script.onload = script.onreadystatechange = function(){
         if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
