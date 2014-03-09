@@ -97,6 +97,7 @@ function spritz_pause_toggle() {
 
 function spritzify(input){
     spritz_index = 1;
+    spritz_pause = false;
     spritzify_go(input);
 }
 
