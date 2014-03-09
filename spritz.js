@@ -85,6 +85,15 @@ function spritz(){
 spritz_words = [""];
 spritz_index = 1;
 spritz_interval = undefined;
+spritz_pause = false;
+
+function spritz_pause_toggle() {
+    if (spritz_pause == true) {
+        spritz_pause = false;
+    } else {
+        spritz_pause = true;
+    }
+}
 
 function spritzify(input){
     spritz_index = 1;
@@ -142,9 +151,11 @@ function spritzify_go(input){
     }
     spritz_interval= setInterval(function() { 
         if (spritz_index < spritz_words.length) {
+            if (! spritz_pause) {
                 var p = pivot(spritz_words[spritz_index]);
                 spritz_index = spritz_index + 1;
                 $('#spritz_result').html(p);
+            }
             } else {
                 clearInterval(spritz_interval);
             }
