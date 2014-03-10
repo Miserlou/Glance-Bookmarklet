@@ -42,6 +42,16 @@ Please be sure to submit your pull requests to the _dev_ branch, rather than _ma
 version depends on accessing the raw resources from Github master, all changes must be reviewed for functionality and
 security testing before they can be merged directly. Thank you!
 
+### Changelog
+
+* 1.1
+  * Remove jQuery
+  * Replace Readability with Diffbot
+  * Add Play/Pause button
+
+* 1.0
+  * Public release!
+
 ### Contributors
 
 * [Rich Jones](https://github.com/Miserlou)
