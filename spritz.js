@@ -25,6 +25,7 @@ function create_spritz(){
                 data = data.replace(/(\r\n|\n|\r)/gm,"");
                 ele.innerHTML = data;
                 document.body.insertBefore(ele, document.body.firstChild);
+                document.getElementById("spritz_toggle").style.display = "none";
             };
 
             document.getElementById("spritz_selector").addEventListener("change", function(e) {
@@ -142,7 +143,8 @@ function spritzify(input){
 
     function startSpritz() {
 
-        document.getElementById("spritz_toggle").innerText = "Stop";
+        document.getElementById("spritz_toggle").style.display = "block";
+        document.getElementById("spritz_toggle").textContent = "Pause";
 
         running = true;
 
@@ -161,7 +163,7 @@ function spritzify(input){
             clearTimeout(spritz_timers[i]);
         }
 
-        document.getElementById("spritz_toggle").innerText = "Play";
+        document.getElementById("spritz_toggle").textContent = "Play";
         running = false;
     }
 
@@ -171,6 +173,8 @@ function spritzify(input){
 // Find the red-character of the current word.
 function pivot(word){
     var length = word.length;
+
+    word = decodeEntities(word);
 
     // Longer words are "right-weighted" for easier readability.
     if(length<6){
@@ -304,7 +308,7 @@ function clearTimeouts(){
 // because JavaScript isn't as awesome as Python.
 String.prototype.repeat = function( num ){
     if(num < 1){
-        return this;
+        return new Array( Math.abs(num) + 1 ).join( this );
     }
     return new Array( num + 1 ).join( this );
 };
