@@ -132,6 +132,14 @@ function spritzify(input){
         }
     });
 
+    function updateValues(i) {
+
+        var p = pivot(all_words[i]);
+        document.getElementById("spritz_result").innerHTML = p;
+        currentWord = i;
+
+    }
+
     function startSpritz() {
 
         document.getElementById("spritz_toggle").innerText = "Stop";
@@ -139,6 +147,7 @@ function spritzify(input){
         running = true;
 
         spritz_timers.push(setInterval(function() {
+            updateValues(currentWord);
             currentWord++;
             if(currentWord >= all_words.length) {
                 currentWord = 0;
@@ -155,6 +164,8 @@ function spritzify(input){
         document.getElementById("spritz_toggle").innerText = "Play";
         running = false;
     }
+
+    startSpritz();
 }
 
 // Find the red-character of the current word.
@@ -177,13 +188,8 @@ function pivot(word){
 
         var start = '';
         var end = '';
-        if((length % 2) === 0){
-            start = word.slice(0, word.length/2);
-            end = word.slice(word.length/2, word.length);
-        } else{
-            start = word.slice(0, word.length/2);
-            end = word.slice(word.length/2, word.length);
-        }
+        start = decodeEntities(word.slice(0, word.length/2));
+        end = decodeEntities(word.slice(word.length/2, word.length));
 
         var result;
         result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
@@ -199,8 +205,8 @@ function pivot(word){
         var tail = 22 - (word.length + 7);
         word = '.......' + word + ('.'.repeat(tail));
 
-        var start = word.slice(0, word.length/2);
-        var end = word.slice(word.length/2, word.length);
+        var start = decodeEntities(word.slice(0, word.length/2));
+        var end = decodeEntities(word.slice(word.length/2, word.length));
 
         var result;
         result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
@@ -249,37 +255,35 @@ function spritzifyURL(){
 
     //getURL("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
     getURL("https://api.diffbot.com/v2/article?url="+ encodeURIComponent(url) +"&token=" + diffbot_token, // +"&callback=?",
-    function(data) {
+        function(data) {
 
-        data = JSON.parse(data);
+            data = JSON.parse(data);
 
-        if(data.error){
-            document.getElementById("spritz_result").innerText = "Article extraction failed. Try selecting text instead.";
-            return;
-        }
+            if(data.error){
+                document.getElementById("spritz_result").innerText = "Article extraction failed. Try selecting text instead.";
+                return;
+            }
 
-        var title = '';
-        if(data.title !== ""){
-            title = data.title + ". ";
-        }
+            var title = '';
+            if(data.title !== ""){
+                title = data.title + ". ";
+            }
 
-        var author = '';
-        if(data.author !== null){
-            author = "By " + data.author + ". ";
-        }
+            var author = '';
+            if(data.author !== undefined){
+                author = "By " + data.author + ". ";
+            }
 
-        var body = document.createElement("div");
-        body.innerHTML = data.text;
-        body = body.innerText; // Textify HTML content.
-        body = body.trim(); // Trim trailing and leading whitespace.
-        body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
+            var body = data.text;
+            body = body.trim(); // Trim trailing and leading whitespace.
+            body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
 
-        var text_content = title + author + body;
-        text_content = text_content.replace(/\./g, '. '); // Make sure punctuation is apprpriately spaced.
-        text_content = text_content.replace(/\?/g, '? ');
-        text_content = text_content.replace(/\!/g, '! ');
-        spritzify(text_content);
-    });
+            var text_content = title + author + body;
+            text_content = text_content.replace(/\./g, '. '); // Make sure punctuation is apprpriately spaced.
+            text_content = text_content.replace(/\?/g, '? ');
+            text_content = text_content.replace(/\!/g, '! ');
+            spritzify(text_content);
+        });
 
 }
 
@@ -299,5 +303,18 @@ function clearTimeouts(){
 // Let strings repeat themselves,
 // because JavaScript isn't as awesome as Python.
 String.prototype.repeat = function( num ){
+    if(num < 1){
+        return this;
+    }
     return new Array( num + 1 ).join( this );
 };
+
+function decodeEntities(s){
+    var str, temp= document.createElement('p');
+    temp.innerHTML= s;
+    str= temp.textContent || temp.innerText;
+    temp=null;
+    return str;
+}
+
+
