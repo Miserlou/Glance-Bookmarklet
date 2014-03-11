@@ -4,7 +4,7 @@
 // https://github.com/Miserlou/OpenSpritz
 
 // Please don't abuse this.
-var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
+var readability_token = 'smbR4c5BRhu5tvVFCq3T3GEac4RqxUr7';
 
 // Create the view from the remote resource.
 function create_spritz(){
