@@ -189,15 +189,9 @@ function pivot(word){
             bit = bit * -1;
         }
 
-        var start = '';
-        var end = '';
-        if((length % 2) === 0){
-            start = word.slice(0, word.length/2);
-            end = word.slice(word.length/2, word.length);
-        } else{
-            start = word.slice(0, word.length/2);
-            end = word.slice(word.length/2, word.length);
-        }
+        var start = word.slice(0, word.length/2);
+        var end = word.slice(word.length/2, word.length);
+        // Remove redundant if/else
 
         var result;
         result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
