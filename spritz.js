@@ -191,10 +191,9 @@ function pivot(word){
             bit = bit * -1;
         }
 
-        var start = '';
-        var end = '';
-        start = decodeEntities(word.slice(0, word.length/2));
-        end = decodeEntities(word.slice(word.length/2, word.length));
+        var wordHalf = word.length*.5;
+        var start = decodeEntities(word.slice(0, wordHalf));
+        var end = decodeEntities(word.slice(wordHalf, word.length));
 
         var result;
         result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
@@ -207,11 +206,12 @@ function pivot(word){
 
     else{
 
-        var tail = 22 - (word.length + 7);
+        var tail = 15 - length;
         word = '.......' + word + ('.'.repeat(tail));
 
-        var start = decodeEntities(word.slice(0, word.length/2));
-        var end = decodeEntities(word.slice(word.length/2, word.length));
+        var wordHalf = word.length*.5;
+        var start = decodeEntities(word.slice(0, wordHalf));
+        var end = decodeEntities(word.slice(wordHalf, word.length));
 
         var result;
         result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
