@@ -197,7 +197,7 @@ function pivot(word){
     var end = decodeEntities(word.slice(wordHalf, word.length));
     var result = "<span class='spritz_start'>" + start.slice(0, start.length -1)
                + "</span><span class='spritz_pivot'>"
-               + start.slice(start.length-1, start.length);
+               + start.slice(start.length-1, start.length)
                + "</span><span class='spritz_end'>" + end + "</span>";
     result = result.replace(/\./g, "<span class='invisible'>.</span>");
 
