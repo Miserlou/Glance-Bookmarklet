@@ -15,10 +15,10 @@ function create_spritz(){
         //getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
 
         // This won't work in Firefox because an old bug and won't work in Chrome because of security stuff:
-        //getURL("spritz.html", function(data){
+        //getURL(window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1) + "spritz.html", function(data){
 
-        //getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
-        getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+        getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
+        //getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
             var spritzContainer = document.getElementById("spritz_container");
 
             if (!spritzContainer) {
@@ -134,6 +134,40 @@ function spritzify(input){
         }
     });
 
+	var changespeed  = function () {
+							  stopSpritz();
+							  if (document.getElementById("spritz_selector").selectedIndex > 0) 
+							  {
+							     startSpritz();
+							  }
+						};
+	
+	document.getElementById("spritz_selector").addEventListener("change", changespeed);
+	
+	var goslower  = function () {
+	    var el = document.getElementById('spritz_selector'); 
+	    if  (el.selectedIndex > 1) {
+		    el.selectedIndex = el.selectedIndex - 1;
+		}
+		stopSpritz();
+		startSpritz();
+	}
+
+	document.getElementById("spritz_slower").addEventListener("click", goslower);
+	
+	var gofaster  = function () {
+	    var el = document.getElementById('spritz_selector'); 
+	    if (el.length > el.selectedIndex + 1) {
+		   el.selectedIndex = el.selectedIndex + 1;
+		}
+		stopSpritz();
+		startSpritz();
+	}
+	
+	document.getElementById("spritz_faster").addEventListener("click", gofaster);
+	
+
+
     function updateValues(i) {
 
         var p = pivot(all_words[i]);
@@ -146,7 +180,8 @@ function spritzify(input){
 
         document.getElementById("spritz_toggle").style.display = "block";
         document.getElementById("spritz_toggle").textContent = "Pause";
-
+        wpm = parseInt(document.getElementById("spritz_selector").value, 10);
+		ms_per_word = 60000/wpm;
         running = true;
 
         spritz_timers.push(setInterval(function() {

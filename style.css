@@ -77,12 +77,20 @@ body{
     float: left;
     width: auto;
 }
+#spritz_slower{
+    float: left;
+    width: auto;
+}
 
 #spritz_toggle{
     float: left;
     width: auto;   
 }
 
+#spritz_faster{
+    float: left;
+    width: auto;
+}
 .invisible{
     font-family: 'Droid Sans Mono', sans-serif;
     color: #ffffff;
