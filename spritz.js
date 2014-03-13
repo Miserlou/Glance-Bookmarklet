@@ -85,6 +85,17 @@ function spritzify(input){
     // Split on any spaces.
     var all_words = input.split(/\s+/);
 
+    // The reader won't stop if the selection starts or ends with spaces
+    if (all_words[0] == "")
+    {
+        all_words = all_words.slice(1, all_words.length);
+    }
+
+    if (all_words[all_words.length - 1] == "")
+    {
+        all_words = all_words.slice(0, all_words.length - 1);
+    }
+
     var word = '';
     var result = '';
 
