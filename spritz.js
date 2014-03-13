@@ -108,9 +108,9 @@ function spritzify(input){
 
         // Add an additional space after punctuation.
         if(all_words[i].indexOf('.') != -1 || all_words[i].indexOf('!') != -1 || all_words[i].indexOf('?') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf(';') != -1|| all_words[i].indexOf(')') != -1){
-            temp_words.splice(t+1, 0, ".");
-            temp_words.splice(t+1, 0, ".");
-            temp_words.splice(t+1, 0, ".");
+            temp_words.splice(t+1, 0, " ");
+            temp_words.splice(t+1, 0, " ");
+            temp_words.splice(t+1, 0, " ");
             t++;
             t++;
             t++;
@@ -175,53 +175,45 @@ function spritzify(input){
 function pivot(word){
     var length = word.length;
 
+    var bestLetter = 1;
+    switch (length) {
+        case 1:
+            bestLetter = 1; // first
+            break;
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            bestLetter = 2; // second
+            break;
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            bestLetter = 3; // third
+            break;
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+            bestLetter = 4; // fourth
+            break;
+        default:
+            bestLetter = 5; // fifth
+    };
+
     word = decodeEntities(word);
+    var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
+    var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
+    var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat((11-(word.length-bestLetter)));
 
-    // Longer words are "right-weighted" for easier readability.
-    if(length<6){
-
-        var bit = 1;
-        while(word.length < 22){
-            if(bit > 0){
-                word = word + '.';
-            }
-            else{
-                word = '.' + word;
-            }
-            bit = bit * -1;
-        }
-
-        var start = '';
-        var end = '';
-        start = decodeEntities(word.slice(0, word.length/2));
-        end = decodeEntities(word.slice(word.length/2, word.length));
-
-        var result;
-        result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
-        result = result + "</span><span class='spritz_pivot'>";
-        result = result + start.slice(start.length-1, start.length);
-        result = result + "</span><span class='spritz_end'>";
-        result = result + end;
-        result = result + "</span>";
-    }
-
-    else{
-
-        var tail = 22 - (word.length + 7);
-        word = '.......' + word + ('.'.repeat(tail));
-
-        var start = decodeEntities(word.slice(0, word.length/2));
-        var end = decodeEntities(word.slice(word.length/2, word.length));
-
-        var result;
-        result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
-        result = result + "</span><span class='spritz_pivot'>";
-        result = result + start.slice(start.length-1, start.length);
-        result = result + "</span><span class='spritz_end'>";
-        result = result + end;
-        result = result + "</span>";
-
-    }
+    var result;
+    result = "<span class='spritz_start'>" + start;
+    result = result + "</span><span class='spritz_pivot'>";
+    result = result + middle;
+    result = result + "</span><span class='spritz_end'>";
+    result = result + end;
+    result = result + "</span>";
 
     result = result.replace(/\./g, "<span class='invisible'>.</span>");
 
