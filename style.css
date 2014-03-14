@@ -14,6 +14,7 @@ body{
     top: 0;
     left: 0;
     z-index: 99999999999999999;
+    outline: none;
 }
 
 #spritz_spacer{
