@@ -66,6 +66,7 @@ security testing before they can be merged directly. Thank you!
 * [jetzt](https://github.com/ds300/jetzt) - jetzt, a Spritz Chrome extension by [@ds300](https://github.com/ds300)
 * [spread0r](https://github.com/xypiie/spread0r) (previously _gritz_) - A Spritz implementation in Perl by [@xypiee](https://github.com/xypiie/)
 * [Spray](https://github.com/chaimpeck/spray) - A Spritzifying website built with OpenSpritz, PHP and Bootstrap. By [@chaimpeck](https://github.com/chaimpeck/) 
+* [Squirt](https://github.com/cameron/squirt) — another spritzy bookmarklet
 
 #### A Note About the Name
 
