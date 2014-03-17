@@ -81,6 +81,7 @@ body{
 .invisible{
     font-family: 'Droid Sans Mono', sans-serif;
     color: #ffffff;
+    position: static;
 }
 
 .start, .pivot, .end, .spritz_start, .spritz_pivot, .spritz_end{
