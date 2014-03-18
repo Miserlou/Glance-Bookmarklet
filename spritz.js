@@ -226,8 +226,8 @@ function pivot(word){
     var endPaddingLength = (11-(word.length-bestLetter));
     
     if (startPaddingLength >= 0 && endPaddingLength >= 0){
-       startPadding  = ('.'.repeat(startPaddingLength));
-       endPadding = ('.'.repeat(endPaddingLength));
+       startPadding  = (repeat('.',startPaddingLength));
+       endPadding = (repeat('.',endPaddingLength));
     }
     
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
@@ -331,6 +331,13 @@ String.prototype.repeat = function( num ){
         return new Array( Math.abs(num) + 1 ).join( this );
     }
     return new Array( num + 1 ).join( this );
+};
+
+var repeat = function(s, times) {
+if (times < 1) return '';
+if (times % 2) return repeat(s, times - 1) + s;
+var half = repeat(s, times / 2);
+return half + half;
 };
 
 function decodeEntities(s){
