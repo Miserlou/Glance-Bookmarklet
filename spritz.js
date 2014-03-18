@@ -105,10 +105,6 @@ function spritzify(input){
 
     for (var i=0; i<all_words.length; i++){
 
-        if(all_words[i].indexOf('.') != -1){
-            temp_words[t] = all_words[i].replace('.', '&#8226;');
-        }
-
         // Double up on long words and words with commas.
         if((all_words[i].indexOf(',') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf('-') != -1 || all_words[i].indexOf('(') != -1|| all_words[i].length > 8) && all_words[i].indexOf('.') == -1){
             temp_words.splice(t+1, 0, all_words[i]);
@@ -182,12 +178,12 @@ function spritzify(input){
     startSpritz();
 }
 
-// Find the red-character of the current word.
-function pivot(word){
-    var length = word.length;
+//Get best Letter Location
+function getBestLetter(wordLength){
 
-    var bestLetter = 1;
-    switch (length) {
+     var bestLetter = 1;
+
+     switch (wordLength) {
         case 1:
             bestLetter = 1; // first
             break;
@@ -212,23 +208,52 @@ function pivot(word){
         default:
             bestLetter = 5; // fifth
     };
+    return bestLetter;
+}
+
+// Find the red-character of the current word.
+function pivot(word){
+    var length = word.length;
+
+    var bestLetter = getBestLetter(wordLength);
+    
+    var start = '';
+    var middle = '';
+    var end = '';
+   
+    var startPadding = '';
+    var endPadding = '';
 
     word = decodeEntities(word);
-    var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
-    var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
-    var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat((11-(word.length-bestLetter)));
-
+    
+    start = word.slice(0, bestLetter-1);
+    middle = word.slice(bestLetter-1,bestLetter);
+    end = word.slice(bestLetter, length);
+    
+    var startPaddingLength = (11-bestLetter);
+    var endPaddingLength = (11-(word.length-bestLetter));
+    
+    if (startPaddingLength >= 0 && endPaddingLength >= 0){
+       startPadding  = ('.'.repeat(startPaddingLength));
+       endPadding = ('.'.repeat(endPaddingLength));
+    }
+    
+    startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
+    endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");   
+    
     var result;
-    result = "<span class='spritz_start'>" + start;
+    result = "<span class='spritz_start'>";
+    result = result + startPadding;
+    result = result + start;
     result = result + "</span><span class='spritz_pivot'>";
     result = result + middle;
     result = result + "</span><span class='spritz_end'>";
     result = result + end;
+    result = result + endPadding;
     result = result + "</span>";
 
-    result = result.replace(/\./g, "<span class='invisible'>.</span>");
-
     return result;
+    
 }
 
 // Get the currently selected text, if any.
