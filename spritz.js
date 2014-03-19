@@ -106,7 +106,7 @@ function spritzify(input){
     for (var i=0; i<all_words.length; i++){
 
         // Double up on long words and words with commas.
-        if((all_words[i].indexOf(',') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf('-') != -1 || all_words[i].indexOf('(') != -1|| all_words[i].length > 8) && all_words[i].indexOf('.') == -1){
+        if(all_words[i].indexOf('.') != -1 || all_words[i].indexOf(',') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf('-') != -1 || all_words[i].indexOf('(') != -1|| all_words[i].length > 8){
             temp_words.splice(t+1, 0, all_words[i]);
             temp_words.splice(t+1, 0, all_words[i]);
             t++;
@@ -115,9 +115,9 @@ function spritzify(input){
 
         // Add an additional space after punctuation.
         if(all_words[i].indexOf('.') != -1 || all_words[i].indexOf('!') != -1 || all_words[i].indexOf('?') != -1 || all_words[i].indexOf(':') != -1 || all_words[i].indexOf(';') != -1|| all_words[i].indexOf(')') != -1){
-            temp_words.splice(t+1, 0, " ");
-            temp_words.splice(t+1, 0, " ");
-            temp_words.splice(t+1, 0, " ");
+            temp_words.splice(t+1, 0, "");
+            temp_words.splice(t+1, 0, "");
+            temp_words.splice(t+1, 0, "");
             t++;
             t++;
             t++;
@@ -215,7 +215,7 @@ function getBestLetter(wordLength){
 function pivot(word){
     var length = word.length;
 
-    var bestLetter = getBestLetter(wordLength);
+    var bestLetter = getBestLetter(length);
     
     var start = '';
     var middle = '';
