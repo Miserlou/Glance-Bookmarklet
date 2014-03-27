@@ -10,15 +10,12 @@ var diffbot_token = '2efef432c72b5a923408e04353c39a7c';
 function create_spritz(){
 
      spritz_loader = function() {
-        //getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+         //getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
 
         //getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
 
-        // This won't work in Firefox because an old bug and won't work in Chrome because of security stuff:
-        //getURL("spritz.html", function(data){
-
         //getURL("https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.html", function(data){
-        getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+        getURL("http://localhost/~knobo/OpenSpritz/spritz.html", function(data){
             var spritzContainer = document.getElementById("spritz_container");
 
             if (!spritzContainer) {
@@ -146,7 +143,9 @@ function spritzify(input){
 
         document.getElementById("spritz_toggle").style.display = "block";
         document.getElementById("spritz_toggle").textContent = "Pause";
-
+	currentWord =   parseInt(document.getElementById("spritz_pos").value);
+	
+	
         running = true;
 
         spritz_timers.push(setInterval(function() {
@@ -163,6 +162,7 @@ function spritzify(input){
         for(var i = 0; i < spritz_timers.length; i++) {
             clearTimeout(spritz_timers[i]);
         }
+	document.getElementById("spritz_pos").value = currentWord;
 
         document.getElementById("spritz_toggle").textContent = "Play";
         running = false;
