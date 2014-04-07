@@ -83,6 +83,16 @@ body{
     width: auto;   
 }
 
+#spritz_pos{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #DDDDDD;
+    float: left;
+    width: auto;   
+}
+
+
 .invisible{
     font-family: 'Droid Sans Mono', sans-serif;
     color: #ffffff;

@@ -146,7 +146,9 @@ function spritzify(input){
 
         document.getElementById("spritz_toggle").style.display = "block";
         document.getElementById("spritz_toggle").textContent = "Pause";
-
+	currentWord =   parseInt(document.getElementById("spritz_pos").value);
+	
+	
         running = true;
 
         spritz_timers.push(setInterval(function() {
@@ -163,6 +165,7 @@ function spritzify(input){
         for(var i = 0; i < spritz_timers.length; i++) {
             clearTimeout(spritz_timers[i]);
         }
+	document.getElementById("spritz_pos").value = currentWord;
 
         document.getElementById("spritz_toggle").textContent = "Play";
         running = false;
