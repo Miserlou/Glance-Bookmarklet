@@ -70,6 +70,7 @@ security testing before they can be merged directly. Thank you!
 * [Speed-ReaderFF](https://github.com/jbmartinez/speed-readerff) - A Firefox exension of OpenSpritz. By [@jbmartinez](https://github.com/jbmartinez/)
 * [spritz-it!](https://github.com/the-happy-hippo/spritz-it) - A Spritzer designed for mobile browsers. By [@the-happy-hippo](https://github.com/the-happy-hippo/) 
 * [Squirt](https://github.com/cameron/squirt) — another spritzy bookmarklet
+* [Spray.el](https://github.com/ian-kelling/spray) - Emacs OpenSpritzish reading mode
 
 #### A Note About the Name
 
