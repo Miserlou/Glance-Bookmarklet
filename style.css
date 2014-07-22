@@ -41,6 +41,7 @@ body{
     padding-bottom: 9px;
     min-height: 40px;
     font-size: 32px;
+    white-space: nowrap;
 }
 
 #guide_top, #guide_bottom{
