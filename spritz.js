@@ -220,7 +220,7 @@ function pivot(word){
     word = decodeEntities(word);
     var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
     var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
-    var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat((11-(word.length-bestLetter)));
+    var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat(Math.max(0,11-(word.length-bestLetter)));
 
     var result;
     result = "<span class='spritz_start'>" + start;
@@ -312,14 +312,29 @@ function clearTimeouts(){
     }
 }
 
-// Let strings repeat themselves,
-// because JavaScript isn't as awesome as Python.
-String.prototype.repeat = function( num ){
-    if(num < 1){
-        return new Array( Math.abs(num) + 1 ).join( this );
-    }
-    return new Array( num + 1 ).join( this );
-};
+(function(repeatFunction){
+    // String repeat function already exists, so return
+    if(repeatFunction) return;
+    
+    // Let strings repeat themselves,
+    // because JavaScript isn't as awesome as Python.
+    String.prototype.repeat = function( num ){
+        
+        // Implementation based on ECMA 6 Draft
+        num = (+num > 0 ? 1 : -1) * Math.floor(Math.abs(num));
+        if(isNaN(num)) num = 0;
+        if(!isFinite(num) || num < 0) throw new RangeError();
+        var res = '', str = this.toString();
+        while (num > 0) {
+            if (num & 1) {
+                res += str;
+            }
+            num >>>= 1;
+            str += str;
+        }
+        return res;
+    };
+}(String.prototype.repeat));
 
 function decodeEntities(s){
     var str, temp= document.createElement('p');

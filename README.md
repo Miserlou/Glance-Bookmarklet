@@ -57,6 +57,7 @@ security testing before they can be merged directly. Thank you!
 * [Rich Jones](https://github.com/Miserlou)
 * [Nick R](https://github.com/niroyb)
 * [Eli White](https://github.com/TheSavior)
+* [Tim B](https://github.com/Barbarrosa)
 
 ## Sister Projects
 
